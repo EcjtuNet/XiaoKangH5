@@ -103,7 +103,7 @@ $signPackage = $jssdk->GetSignPackage();
         <div class="col-xs-12 text-center layout">
             <section class="row">
                 <div class="section-photo col-xs-8 col-xs-offset-2">
-                    <img src="images/man2.png" class="img-responsive img-centered1">
+                    <img src="images/man2.png" id="img" class="img-responsive img-centered1">
                     <div class="section-hover">
                         <!--这里调用手机设备的相机API-->
                         <a href="javascript:void();" class="section-hover-content" id="weixin">
@@ -198,7 +198,7 @@ $signPackage = $jssdk->GetSignPackage();
             "downloadImage"
         ]
     });
-
+    var img = document.getElementById("img");
     var btn = document.getElementById('weixin');
     //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
     var images = {
@@ -212,25 +212,26 @@ $signPackage = $jssdk->GetSignPackage();
             wx.chooseImage({
                 success: function (res) {
                     images.localId = res.localIds;  //保存到images
+                    img.src=images.localId;
                     // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
                 }
             });
 //            var i = 0, len = images.localId.length;
 //
 //            function wxUpload() {
-                wx.uploadImage({
-                    localId: images.localId[0], // 需要上传的图片的本地ID，由chooseImage接口获得
-                    isShowProgressTips: 1, // 默认为1，显示进度提示
-                    success: function (res) {
-                        i++;
-                        //将上传成功后的serverId保存到serverid
-                        images.serverId.push(res.serverId);
+            wx.uploadImage({
+                localId: images.localId[0], // 需要上传的图片的本地ID，由chooseImage接口获得
+                isShowProgressTips: 1, // 默认为1，显示进度提示
+                success: function (res) {
+                    i++;
+                    //将上传成功后的serverId保存到serverid
+                    images.serverId.push(res.serverId);
 //                        if (i < len) {
 //                            wxUpload();
 //                        }
-                    }
-                });
-            }
+                }
+            });
+        }
 
 //        }
     });
