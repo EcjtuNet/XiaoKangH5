@@ -1,3 +1,9 @@
+<?php
+$arr=$_POST;
+foreach ($arr as $value){
+	echo  $value;
+}
+?>
 <!doctype html>
 <html lang="zh-CN">
 <head>

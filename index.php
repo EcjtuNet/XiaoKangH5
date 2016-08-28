@@ -22,7 +22,7 @@
     }
    
 }  
-setTimeout(" location.href='index_2.php'",2000)
+setTimeout(" location.href='index_2.php'",10000)
 
 </script>
 </body>
