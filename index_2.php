@@ -99,84 +99,98 @@ $signPackage = $jssdk->GetSignPackage();
 </style>
 <body>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-12 text-center layout">
-            <section class="row">
-                <div class="section-photo col-xs-8 col-xs-offset-2">
-                    <img src="images/man2.png" id="img" class="img-responsive img-centered1">
-                    <div class="section-hover">
-                        <!--这里调用手机设备的相机API-->
-                        <a href="javascript:void();" class="section-hover-content" id="weixin">
+    <from action="" method="">
+        <div class="row">
+            <div class="col-xs-12 text-center layout">
+                <section class="row">
+                    <div class="section-photo col-xs-8 col-xs-offset-2">
+                        <img src="images/man2.png" id="img" class="img-responsive img-centered1">
+                        <div class="section-hover">
+                            <!--这里调用手机设备的相机API-->
+                            <a href="javascript:void();" class="section-hover-content" id="weixin">
 									<span style="font-size: 70px;text-align: center;">
 										<i class="icon-camera"></i>
 									</span>
-                            <h4>上传照片</h4>
+                                <h4>上传照片</h4>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="dash col-xs-12"></div>
+                    <div class="section-info col-xs-10 col-xs-offset-1">
+                        <div class="row padding">
+                            <div class="col-xs-12 text-center" style="padding-bottom: 25px;">
+                                <h2>选择学科</h2>
+                                <h3>(学士服的领口颜色)</h3>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-4">
+                                    <input type="radio" value="gk" id="gk" name="lingdai" style="display:none">
+                                    <img id="first" src="images/lingkou3.png" onclick="myFun(this.id)"
+                                         class="img-responsive img-padding"/>
+                                </div>
+                                <div class="col-xs-4">
+                                    <input type="radio" value="lk" id="gk" name="lingdai" style="display:none">
+                                    <img id="second" src="images/lingkou2.png" onclick="myFun(this.id)"
+                                         class="img-responsive img-padding"/>
+                                </div>
+                                <div class="col-xs-4">
+                                    <input type="radio" value="wk" id="gk" name="lingdai" style="display:none">
+                                    <img id="third" src="images/lingkou1.png" onclick="myFun(this.id)"
+                                         class="img-responsive img-padding"/>
+                                </div>
+                                <div style="width: 100%;display: flex;">
+                                    <div class="section-info-font">
+                                        <h1>工科</h1>
+                                    </div>
+                                    <div class="section-info-font">
+                                        <h1>理科</h1>
+                                    </div>
+                                    <div class="section-info-font">
+                                        <h1>文科</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dash col-xs-12" style="margin-top: 0px;"></div>
+                    <div class="section-info col-xs-10 col-xs-offset-1">
+                        <div class="row padding">
+                            <div class="col-xs-12 text-center" style="padding-bottom: 25px;">
+                                <h2>选择性别</h2>
+                            </div>
+                            <div class="col-xs-8 col-xs-offset-2">
+                                <div class="col-xs-6">
+                                    <div class="img-box">
+                                        <input type="radio" value="man" id="wk" name="sex" style="display:none">
+                                        <img src="images/circle-bg.png" class="img-responsive img-sex"
+                                             onclick="myFun(this.id)"/>
+                                        <img src="images/boy.png" id="man" class="img-responsive img-sex1"
+                                        >
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="img-box">
+                                        <input type="radio" value="man" id="wk" name="sex" style="display:none">
+                                        <img src="images/circle-bg.png" class="img-responsive img-sex"
+                                             onclick="myFun(this.id)"/>
+                                        <img src="images/girl.png" id="woman" class="img-responsive img-sex1"
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dash col-xs-12"></div>
+                    <div class="col-xs-10 col-xs-offset-1 section-button">
+                        <a href="" class="button button-border">
+                            <i class="icon-edit bigger-110"></i>
+                            录入学籍
                         </a>
                     </div>
-                </div>
-                <div class="dash col-xs-12"></div>
-                <div class="section-info col-xs-10 col-xs-offset-1">
-                    <div class="row padding">
-                        <div class="col-xs-12 text-center" style="padding-bottom: 25px;">
-                            <h2>选择学科</h2>
-                            <h3>(学士服的领口颜色)</h3>
-                        </div>
-                        <div class="col-xs-12">
-                            <div class="col-xs-4">
-                                <img id="first" src="images/lingkou3.png" onclick="myFun(this.id)" class="img-responsive img-padding"/>
-                            </div>
-                            <div class="col-xs-4">
-                                <img id="second" src="images/lingkou2.png" onclick="myFun(this.id)" class="img-responsive img-padding"/>
-                            </div>
-                            <div class="col-xs-4">
-                                <img id="third" src="images/lingkou1.png" onclick="myFun(this.id)" class="img-responsive img-padding"/>
-                            </div>
-                            <div style="width: 100%;display: flex;">
-                                <div class="section-info-font">
-                                    <h1>工科</h1>
-                                </div>
-                                <div class="section-info-font">
-                                    <h1>理科</h1>
-                                </div>
-                                <div class="section-info-font">
-                                    <h1>文科</h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="dash col-xs-12" style="margin-top: 0px;"></div>
-                <div class="section-info col-xs-10 col-xs-offset-1">
-                    <div class="row padding">
-                        <div class="col-xs-12 text-center" style="padding-bottom: 25px;">
-                            <h2>选择性别</h2>
-                        </div>
-                        <div class="col-xs-8 col-xs-offset-2">
-                            <div class="col-xs-6">
-                                <div class="img-box">
-                                    <img src="images/circle-bg.png" class="img-responsive img-sex" />
-                                    <img  src="images/boy.png" class="img-responsive img-sex1">
-                                </div>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="img-box">
-                                    <img src="images/circle-bg.png" class="img-responsive img-sex"/>
-                                    <img src="images/girl.png" class="img-responsive img-sex1">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="dash col-xs-12"></div>
-                <div class="col-xs-10 col-xs-offset-1 section-button">
-                    <a href="" class="button button-border">
-                        <i class="icon-edit bigger-110"></i>
-                        录入学籍
-                    </a>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
-    </div>
+    </from>
 </div>
 </body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -208,12 +222,12 @@ $signPackage = $jssdk->GetSignPackage();
     function myFun(sId) {
         var oImg = document.getElementsByTagName('img');
 
-        for(var i = 0; i < oImg.length; i++) {
-            if(oImg[i].id)== sId) {
+        for (var i = 0; i < oImg.length; i++) {
+            if (oImg[i].id == sId) {
                 oImg[i].previousSibling.previousSibling.checked = true;
                 oImg[i].style.border = '1px solid #FF6600';
             } else {
-                oImg[i].style.border = '1px solid #000000';
+                oImg[i].style.border = '1px solid #008800';
 
             }
         }
