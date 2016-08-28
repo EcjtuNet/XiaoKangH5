@@ -106,6 +106,9 @@ $signPackage = $jssdk->GetSignPackage();
         background: url("images/girl.png") no-repeat center;
         padding-bottom: 30px;
     }
+    .clear_all{
+        clear: both;
+    }
 </style>
 <body>
 <div class="container-fluid">
@@ -168,7 +171,7 @@ $signPackage = $jssdk->GetSignPackage();
                             <div class="col-xs-12 text-center" style="padding-bottom: 25px;">
                                 <h2>选择性别</h2>
                             </div>
-                            <div class="col-xs-8 col-xs-offset-2">
+                            <div class="col-xs-8 col-xs-offset-2 clear_all">
                                 <div class="col-xs-6">
                                     <div class="img-box">
                                         <input type="radio" value="man" id="wk" name="sex" style="display:none">
