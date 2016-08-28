@@ -99,17 +99,20 @@ $signPackage = $jssdk->GetSignPackage();
 
     .imgBoy {
         background: url("images/boy.png") no-repeat center;
-        padding-bottom: 30px;
+        position: relative;
+        margin-top: 23%;
+
     }
 
     .imgGirl {
         background: url("images/girl.png") no-repeat center;
-        padding-bottom: 30px;
+        position: relative;
+        margin-top: 23%;
     }
 </style>
 <body>
 <div class="container-fluid">
-    <from action="index_3.php" method="POST">
+    <from id="search_form" action="index_3.php" method="POST">
         <div class="row">
             <div class="col-xs-12 text-center layout">
                 <section class="row">
@@ -195,11 +198,12 @@ $signPackage = $jssdk->GetSignPackage();
                     </div>
                     <div class="dash col-xs-12"></div>
                     <div class="col-xs-10 col-xs-offset-1 section-button">
-                        <input type="submit" name="argsubmit" style="display:none"  />
-                        <a href="javascript:void();" class="button button-border" onclick="add()">
-                            <i class="icon-edit bigger-110"></i>
-                            录入学籍
-                        </a>
+<!--                        <input type="submit" name="argsubmit" style="display:none"  />-->
+<!--                        <a href="javascript:document.search_form.submit();" class="button button-border" onclick="add()">-->
+<!--                            <i class="icon-edit bigger-110"></i>-->
+<!--                            录入学籍-->
+<!--                        </a>-->
+                        <input type="submit" value="提交" />
                     </div>
                 </section>
             </div>
@@ -236,7 +240,7 @@ $signPackage = $jssdk->GetSignPackage();
     };
     function add()
     {
-        document.getElementById("argform").submit();
+         document.getElementById("argform").submit();
 
     }
     function myLd(sId) {
