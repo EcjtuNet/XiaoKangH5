@@ -6,11 +6,12 @@
  * Date: 2016/8/28
  * Time: 21:33
  */
-define('DB_NAME','test');
-define('DB_USER','root');
-define('DB_PASSWD','');
-define('DB_HOST','localhost');
-define('DB_TYPE','mysql');
+define('DB_NAME', 'test');
+define('DB_USER', 'root');
+define('DB_PASSWD', '');
+define('DB_HOST', 'localhost');
+define('DB_TYPE', 'mysql');
+
 class MyPdo
 {
     private $db = null;
@@ -19,7 +20,7 @@ class MyPdo
     {
         try {
 //            $this->db = new PDO('mysql:host=localhost;dbname=test', "root", "");
-            $this->db = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWD);
+            $this->db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASSWD);
         } catch
         (PDOException $e) {
             print "Error: " . $e->getMessage() . "<br/>";
@@ -27,6 +28,12 @@ class MyPdo
             die();
         }
     }
+
+    public function add()
+    {
+        
+    }
+
 //    public function show(){
 //        $sql = 'select * from test';
 //        foreach ( $this->db->query($sql) as $value)

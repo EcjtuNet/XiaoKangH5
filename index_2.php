@@ -118,6 +118,7 @@ $signPackage = $jssdk->GetSignPackage();
             <section class="row">
                 <form method="post" id="form_name" action="index_3.php" role="form" class="contactForm" style="width:100%;">
                     <input type="text" name="imgId"  id="serverId" style="display: none"/>
+                    <input type="text" name="filePath"  id="filepath" style="display: none"/>
                     <div class="section-photo col-xs-8 col-xs-offset-2">
                         <img src="images/man2.png" id="img" class="img-responsive img-centered1">
                         <div class="section-hover">
@@ -234,6 +235,7 @@ $signPackage = $jssdk->GetSignPackage();
     var btn = document.getElementById('weixin');
     var oImg = document.getElementsByTagName('img');
     var imgId=document.getElementById("serverId");
+    var filePath=document.getElementById("filePath");
     //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
     var images = {
         localId: [],
@@ -277,6 +279,7 @@ $signPackage = $jssdk->GetSignPackage();
                 success: function (res) {
                     images.localId = res.localIds;  //保存到images
                     img.src = images.localId;
+                    filePath.value=images.localId;
                     // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
                 }
             });

@@ -1,3 +1,7 @@
+<?php
+error_reporting(E_ALL || ~E_NOTICE);
+header("Content-type:text/html; charset=utf-8");
+?>
 <!doctype html>
 <html lang="zh-CN">
 <head>
@@ -11,15 +15,12 @@
   	<script type="text/javascript" src="js/bootstrap.js"></script>
 </head>
 <body>
-<?php
-error_reporting(E_ALL || ~E_NOTICE);
-header("Content-type:text/html; charset=utf-8");
-$arr=$_POST;
-foreach ($arr as $value){
-	echo "<font color='white'>".$value."</font>";
-}
-?>
+
 	<form method="post" action="index_4.php" role="form" class="contactForm" style="width:100%;">
+		<input type="text" name="imgId" class="form-control" value="<?php echo $_POST['imgId']; ?>" data-rule="maxlen:4" style="display: none">
+		<input type="text" name="filePath" class="form-control" value="<?php echo $_POST['filePath']; ?>" data-rule="maxlen:4" style="display: none">
+		<input type="text" name="lingdai" class="form-control" value="<?php echo $_POST['lingdai']; ?>" data-rule="maxlen:4" style="display: none">
+		<input type="text" name="sex" class="form-control" value="<?php echo $_POST['sex']; ?>" data-rule="maxlen:4" style="display: none">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-10 col-xs-offset-1">
