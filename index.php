@@ -1,3 +1,7 @@
+<?php
+error_reporting(E_ALL || ~E_NOTICE);
+header("Content-type:text/html; charset=utf-8");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +26,7 @@
     }
    
 }  
-setTimeout(" location.href='index_2.php'",10000)
+setTimeout(" location.href='index_2.php'",4000)
 
 </script>
 </body>

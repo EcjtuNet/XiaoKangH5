@@ -1,9 +1,3 @@
-<?php
-$arr=$_POST;
-foreach ($arr as $value){
-	echo  $value;
-}
-?>
 <!doctype html>
 <html lang="zh-CN">
 <head>
@@ -13,11 +7,19 @@ foreach ($arr as $value){
   	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   	<link rel="stylesheet" href="css/info.css" type="text/css">
   	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-  	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+  	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
   	<script type="text/javascript" src="js/bootstrap.js"></script>
 </head>
 <body>
-	<form method="post" role="form" class="contactForm" style="width:100%;">
+<?php
+error_reporting(E_ALL || ~E_NOTICE);
+header("Content-type:text/html; charset=utf-8");
+$arr=$_POST;
+foreach ($arr as $value){
+	echo "<font color='white'>".$value."</font>";
+}
+?>
+	<form method="post" action="index_4.php" role="form" class="contactForm" style="width:100%;">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-10 col-xs-offset-1">
@@ -45,7 +47,7 @@ foreach ($arr as $value){
 
 					<div class="form-group mar-top20 mar-bot20">
 						<label for="message" class="text-center">我的入学宣言</label>
-						<select name="xuanyan" class="form-control" style="background:#444;color:#fff;height:40px;border-bottom:none;border-top-left-radius: 5px;
+						<select  class="form-control" style="background:#444;color:#fff;height:40px;border-bottom:none;border-top-left-radius: 5px;
   border-top-right-radius: 5px;"id="select2">
 							<option>我立志在小康大学开启洪荒之力，走上人生颠覆！</option>
 							<option>生活不只眼前的苟且，还有小康大学和远方！</option>

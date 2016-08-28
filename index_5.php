@@ -1,3 +1,7 @@
+<?php
+error_reporting(E_ALL || ~E_NOTICE);
+header("Content-type:text/html; charset=utf-8");
+?>
 <!doctype html>
 <html lang="zh-CN">
 <head>
@@ -7,7 +11,7 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   	<link rel="stylesheet" href="css/ewm.css" type="text/css">
   	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>  	
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 </head>
 <body>

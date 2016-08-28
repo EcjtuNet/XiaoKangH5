@@ -112,10 +112,12 @@ $signPackage = $jssdk->GetSignPackage();
 </style>
 <body>
 <div class="container-fluid">
-    <from id="search_form" action="index_3.php" method="POST">
-        <div class="row">
-            <div class="col-xs-12 text-center layout">
-                <section class="row">
+
+    <div class="row">
+        <div class="col-xs-12 text-center layout">
+            <section class="row">
+                <form method="post" id="form_name" action="index_3.php" role="form" class="contactForm" style="width:100%;">
+                    <input type="text" name="imgId"  id="serverId" style="display: none"/>
                     <div class="section-photo col-xs-8 col-xs-offset-2">
                         <img src="images/man2.png" id="img" class="img-responsive img-centered1">
                         <div class="section-hover">
@@ -183,32 +185,30 @@ $signPackage = $jssdk->GetSignPackage();
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="img-box">
-                                        <input type="radio" value="man" id="wk" name="sex" style="display:none">
+                                        <input type="radio" value="woman" id="wk" name="sex" style="display:none">
                                         <img src="images/circle-bg.png" id="girl" class="img-responsive img-sex imgGirl"
                                              onclick="mySex(this.id)"/>
                                         <!--                                        <img src="images/girl.png" id="woman" class="img-responsive img-sex1"-->
                                         <!--                                        >-->
                                     </div>
                                 </div>
-                                <div  style="clear:both;">
-
-                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="dash col-xs-12"></div>
                     <div class="col-xs-10 col-xs-offset-1 section-button">
-<!--                        <input type="submit" name="argsubmit" style="display:none"  />-->
-<!--                        <a href="javascript:document.search_form.submit();" class="button button-border" onclick="add()">-->
-<!--                            <i class="icon-edit bigger-110"></i>-->
-<!--                            录入学籍-->
-<!--                        </a>-->
-                        <input type="submit" value="提交" />
+<!--                                                <a href="javascript:document.form_name.submit();" class="button button-border" >-->
+<!--                                                    <i class="icon-edit bigger-110"></i>-->
+<!--                                                    录入学籍-->
+<!--                                                </a>-->
+                        <input type="submit" value=" 录入学籍" class="button button-border icon-edit bigger-110"
+                               style="color:#fff">
                     </div>
-                </section>
-            </div>
+                </form>
+            </section>
         </div>
-    </from>
+    </div>
+
 </div>
 </body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -233,16 +233,12 @@ $signPackage = $jssdk->GetSignPackage();
     var img = document.getElementById("img");
     var btn = document.getElementById('weixin');
     var oImg = document.getElementsByTagName('img');
+    var imgId=document.getElementById("serverId");
     //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
     var images = {
         localId: [],
         serverId: []
     };
-    function add()
-    {
-         document.getElementById("argform").submit();
-
-    }
     function myLd(sId) {
         for (var i = 1; i < 4; i++) {
             if (oImg[i].id == sId) {
@@ -281,7 +277,6 @@ $signPackage = $jssdk->GetSignPackage();
                 success: function (res) {
                     images.localId = res.localIds;  //保存到images
                     img.src = images.localId;
-
                     // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
                 }
             });
@@ -295,7 +290,7 @@ $signPackage = $jssdk->GetSignPackage();
 //                    i++;
                     //将上传成功后的serverId保存到serverid
                     images.serverId.push(res.serverId);
-                    $_SESSION['serverId'] = res.serverId;
+                    imgId.value= res.serverId;
 //                        if (i < len) {
 //                            wxUpload();
 //                        }
