@@ -229,22 +229,9 @@ $signPackage = $jssdk->GetSignPackage();
         localId: [],
         serverId: []
     };
-    function myFun(sId) {
+    function myLd(sId) {
         var oImg = document.getElementsByTagName('img');
-        for (var i = 1; i < oImg.length; i++) {
-            if (i < 4) {
-                if (oImg[i].id == sId) {
-                    oImg[i].previousSibling.previousSibling.checked = true;
-                    oImg[i].style.border = '1px solid #FF6600';
-                } else {
-                    oImg[i].style.border = '1px solid #008800';
-
-                }
-            }
-        }
-    else
-        {
-
+        for (var i = 1; i < 4; i++) {
             if (oImg[i].id == sId) {
                 oImg[i].previousSibling.previousSibling.checked = true;
                 oImg[i].style.border = '1px solid #FF6600';
@@ -254,6 +241,17 @@ $signPackage = $jssdk->GetSignPackage();
             }
         }
     }
+    function mySex(sId) {
+        var oImg = document.getElementsByTagName('img');
+        for (var i = 4; i < oImg.length; i++) {
+            if (oImg[i].id == sId) {
+                oImg[i].previousSibling.previousSibling.checked = true;
+                oImg[i].style.border = '1px solid #FF6600';
+            } else {
+                oImg[i].style.border = '1px solid #008800';
+
+            }
+        }
     }
     //一开始打算利用ajax选存储img的serverId,后经过思考决定暂时废弃
     //    function setAjaxImage(serverId){
