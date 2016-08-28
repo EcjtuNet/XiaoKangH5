@@ -96,6 +96,14 @@ $signPackage = $jssdk->GetSignPackage();
         margin-top: 23%;
         left: 30%;
     }
+
+    .imgBoy {
+        background: url("images/boy.png") no-repeat center;
+    }
+
+    .imgGirl {
+        background: url("images/girl.png") no-repeat center;
+    }
 </style>
 <body>
 <div class="container-fluid">
@@ -162,19 +170,19 @@ $signPackage = $jssdk->GetSignPackage();
                                 <div class="col-xs-6">
                                     <div class="img-box">
                                         <input type="radio" value="man" id="wk" name="sex" style="display:none">
-                                        <img src="images/circle-bg.png" class="img-responsive img-sex"
+                                        <img src="images/circle-bg.png" class="img-responsive img-sex imgBoy"
                                              onclick="myFun(this.id)"/>
-                                        <img src="images/boy.png" id="man" class="img-responsive img-sex1"
-                                        >
+                                        <!--                                        <img src="images/boy.png" id="man" class="img-responsive img-sex1"-->
+                                        <!--                                        >-->
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="img-box">
                                         <input type="radio" value="man" id="wk" name="sex" style="display:none">
-                                        <img src="images/circle-bg.png" class="img-responsive img-sex"
+                                        <img src="images/circle-bg.png" class="img-responsive img-sex imgGirl"
                                              onclick="myFun(this.id)"/>
-                                        <img src="images/girl.png" id="woman" class="img-responsive img-sex1"
-                                        >
+                                        <!--                                        <img src="images/girl.png" id="woman" class="img-responsive img-sex1"-->
+                                        <!--                                        >-->
                                     </div>
                                 </div>
                             </div>
@@ -222,7 +230,7 @@ $signPackage = $jssdk->GetSignPackage();
     function myFun(sId) {
         var oImg = document.getElementsByTagName('img');
 
-        for (var i = 1; i <4; i++) {
+        for (var i = 1; i < 4; i++) {
             if (oImg[i].id == sId) {
                 oImg[i].previousSibling.previousSibling.checked = true;
                 oImg[i].style.border = '1px solid #FF6600';
@@ -231,7 +239,7 @@ $signPackage = $jssdk->GetSignPackage();
 
             }
         }
-        for (var i = 4; i <oImg.length; i++) {
+        for (var i = 4; i < oImg.length; i++) {
             if (oImg[i].id == sId) {
                 oImg[i].previousSibling.previousSibling.checked = true;
                 oImg[i].style.border = '1px solid #FF6600';
