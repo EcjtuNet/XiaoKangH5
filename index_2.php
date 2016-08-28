@@ -192,7 +192,11 @@ $signPackage = $jssdk->GetSignPackage();
                     </div>
                     <div class="dash col-xs-12"></div>
                     <div class="col-xs-10 col-xs-offset-1 section-button">
-                        <input type="submit" class="button button-border icon-edit bigger-110" value="录入学籍">
+                        <input type="submit" name="argsubmit" style="display:none"  />
+                        <a href="javascript:void();" class="button button-border" onclick="add()">
+                            <i class="icon-edit bigger-110"></i>
+                            录入学籍
+                        </a>
                     </div>
                 </section>
             </div>
@@ -227,6 +231,11 @@ $signPackage = $jssdk->GetSignPackage();
         localId: [],
         serverId: []
     };
+    function add()
+    {
+        document.getElementById("argform").submit();
+
+    }
     function myLd(sId) {
         for (var i = 1; i < 4; i++) {
             if (oImg[i].id == sId) {
