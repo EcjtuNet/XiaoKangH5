@@ -208,16 +208,16 @@ $signPackage = $jssdk->GetSignPackage();
     wx.ready(function () {
         // 在这里调用 API
         btn.onclick = function () {
+
+            wx.chooseImage({
+                success: function (res) {
+                    images.localId = res.localIds;  //保存到images
+                    // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                }
+            });
             var i = 0, len = images.localId.length;
 
-            function wxUpload() {
-                wx.chooseImage({
-                    success: function (res) {
-                        images.localId = res.localIds;  //保存到images
-                        // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-                    }
-                });
-
+//            function wxUpload() {
                 wx.uploadImage({
                     localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
                     isShowProgressTips: 1, // 默认为1，显示进度提示
@@ -228,7 +228,7 @@ $signPackage = $jssdk->GetSignPackage();
                         if (i < len) {
                             wxUpload();
                         }
-                    }
+//                    }
                 });
             }
 
