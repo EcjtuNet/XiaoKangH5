@@ -135,17 +135,17 @@ $signPackage = $jssdk->GetSignPackage();
                             <div class="col-xs-12">
                                 <div class="col-xs-4">
                                     <input type="radio" value="gk" id="gk" name="lingdai" style="display:none">
-                                    <img id="first" src="images/lingkou3.png" onclick="myFun(this.id)"
+                                    <img id="first" src="images/lingkou3.png" onclick="myLd(this.id)"
                                          class="img-responsive img-padding"/>
                                 </div>
                                 <div class="col-xs-4">
                                     <input type="radio" value="lk" id="gk" name="lingdai" style="display:none">
-                                    <img id="second" src="images/lingkou2.png" onclick="myFun(this.id)"
+                                    <img id="second" src="images/lingkou2.png" onclick="myLd(this.id)"
                                          class="img-responsive img-padding"/>
                                 </div>
                                 <div class="col-xs-4">
                                     <input type="radio" value="wk" id="gk" name="lingdai" style="display:none">
-                                    <img id="third" src="images/lingkou1.png" onclick="myFun(this.id)"
+                                    <img id="third" src="images/lingkou1.png" onclick="myLd(this.id)"
                                          class="img-responsive img-padding"/>
                                 </div>
                                 <div style="width: 100%;display: flex;">
@@ -173,7 +173,7 @@ $signPackage = $jssdk->GetSignPackage();
                                     <div class="img-box">
                                         <input type="radio" value="man" id="wk" name="sex" style="display:none">
                                         <img src="images/circle-bg.png" id="boy" class="img-responsive img-sex imgBoy "
-                                             onclick="myFun(this.id)"/>
+                                             onclick="mySex(this.id)"/>
                                         <!--                                        <img src="images/boy.png" id="man" class="img-responsive img-sex1"-->
                                         <!--                                        >-->
                                     </div>
@@ -182,7 +182,7 @@ $signPackage = $jssdk->GetSignPackage();
                                     <div class="img-box">
                                         <input type="radio" value="man" id="wk" name="sex" style="display:none">
                                         <img src="images/circle-bg.png" id="girl" class="img-responsive img-sex imgGirl"
-                                             onclick="myFun(this.id)"/>
+                                             onclick="mySex(this.id)"/>
                                         <!--                                        <img src="images/girl.png" id="woman" class="img-responsive img-sex1"-->
                                         <!--                                        >-->
                                     </div>
@@ -224,13 +224,13 @@ $signPackage = $jssdk->GetSignPackage();
     });
     var img = document.getElementById("img");
     var btn = document.getElementById('weixin');
+    var oImg = document.getElementsByTagName('img');
     //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
     var images = {
         localId: [],
         serverId: []
     };
     function myLd(sId) {
-        var oImg = document.getElementsByTagName('img');
         for (var i = 1; i < 4; i++) {
             if (oImg[i].id == sId) {
                 oImg[i].previousSibling.previousSibling.checked = true;
@@ -242,7 +242,6 @@ $signPackage = $jssdk->GetSignPackage();
         }
     }
     function mySex(sId) {
-        var oImg = document.getElementsByTagName('img');
         for (var i = 4; i < oImg.length; i++) {
             if (oImg[i].id == sId) {
                 oImg[i].previousSibling.previousSibling.checked = true;
