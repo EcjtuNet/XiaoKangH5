@@ -109,7 +109,7 @@ $signPackage = $jssdk->GetSignPackage();
 </style>
 <body>
 <div class="container-fluid">
-    <from action="" method="">
+    <from action="index_3.php" method="POST">
         <div class="row">
             <div class="col-xs-12 text-center layout">
                 <section class="row">
@@ -192,10 +192,7 @@ $signPackage = $jssdk->GetSignPackage();
                     </div>
                     <div class="dash col-xs-12"></div>
                     <div class="col-xs-10 col-xs-offset-1 section-button">
-                        <a href="" class="button button-border">
-                            <i class="icon-edit bigger-110"></i>
-                            录入学籍
-                        </a>
+                        <input type="onsubmit" class="button button-border icon-edit bigger-110" value=" 录入学籍">
                     </div>
                 </section>
             </div>
@@ -292,6 +289,5 @@ $signPackage = $jssdk->GetSignPackage();
 
 //        }
     });
-
 </script>
 </html>
