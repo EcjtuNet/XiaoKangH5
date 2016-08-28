@@ -99,10 +99,12 @@ $signPackage = $jssdk->GetSignPackage();
 
     .imgBoy {
         background: url("images/boy.png") no-repeat center;
+        padding-bottom: 6%;
     }
 
     .imgGirl {
         background: url("images/girl.png") no-repeat center;
+        padding-bottom: 6%;
     }
 </style>
 <body>
@@ -229,8 +231,20 @@ $signPackage = $jssdk->GetSignPackage();
     };
     function myFun(sId) {
         var oImg = document.getElementsByTagName('img');
+        for (var i = 1; i < oImg.length; i++) {
+            if (i < 4) {
+                if (oImg[i].id == sId) {
+                    oImg[i].previousSibling.previousSibling.checked = true;
+                    oImg[i].style.border = '1px solid #FF6600';
+                } else {
+                    oImg[i].style.border = '1px solid #008800';
 
-        for (var i = 1; i < 4; i++) {
+                }
+            }
+        }
+    else
+        {
+
             if (oImg[i].id == sId) {
                 oImg[i].previousSibling.previousSibling.checked = true;
                 oImg[i].style.border = '1px solid #FF6600';
@@ -239,15 +253,7 @@ $signPackage = $jssdk->GetSignPackage();
 
             }
         }
-        for (var i = 4; i < oImg.length; i++) {
-            if (oImg[i].id == sId) {
-                oImg[i].previousSibling.previousSibling.checked = true;
-                oImg[i].style.border = '1px solid #FF6600';
-            } else {
-                oImg[i].style.border = '1px solid #008800';
-
-            }
-        }
+    }
     }
     //一开始打算利用ajax选存储img的serverId,后经过思考决定暂时废弃
     //    function setAjaxImage(serverId){
