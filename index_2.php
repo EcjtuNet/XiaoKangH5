@@ -123,13 +123,13 @@ $signPackage = $jssdk->GetSignPackage();
                         </div>
                         <div class="col-xs-12">
                             <div class="col-xs-4">
-                                <img src="images/lingkou3.png" class="img-responsive img-padding"/>
+                                <img id="first" src="images/lingkou3.png" onclick="myFun(this.id)" class="img-responsive img-padding"/>
                             </div>
                             <div class="col-xs-4">
-                                <img src="images/lingkou2.png" class="img-responsive img-padding"/>
+                                <img id="second" src="images/lingkou2.png" onclick="myFun(this.id)" class="img-responsive img-padding"/>
                             </div>
                             <div class="col-xs-4">
-                                <img src="images/lingkou1.png" class="img-responsive img-padding"/>
+                                <img id="third" src="images/lingkou1.png" onclick="myFun(this.id)" class="img-responsive img-padding"/>
                             </div>
                             <div style="width: 100%;display: flex;">
                                 <div class="section-info-font">
@@ -154,8 +154,8 @@ $signPackage = $jssdk->GetSignPackage();
                         <div class="col-xs-8 col-xs-offset-2">
                             <div class="col-xs-6">
                                 <div class="img-box">
-                                    <img src="images/circle-bg.png" class="img-responsive img-sex"/>
-                                    <img src="images/boy.png" class="img-responsive img-sex1">
+                                    <img src="images/circle-bg.png" class="img-responsive img-sex" />
+                                    <img  src="images/boy.png" class="img-responsive img-sex1">
                                 </div>
                             </div>
                             <div class="col-xs-6">
@@ -205,6 +205,27 @@ $signPackage = $jssdk->GetSignPackage();
         localId: [],
         serverId: []
     };
+    function myFun(sId) {
+        var oImg = document.getElementsByTagName('img');
+
+        for(var i = 0; i < oImg.length; i++) {
+            if(oImg[i].id == sId) {
+                oImg[i].previousSibling.previousSibling.checked = true;
+                oImg[i].style.border = '1px solid #FF6600';
+            } else {
+                oImg[i].style.border = '1px solid #008800';
+
+            }
+        }
+    }
+    //一开始打算利用ajax选存储img的serverId,后经过思考决定暂时废弃
+    //    function setAjaxImage(serverId){
+    //        $.post("./pdo_image.php",{imgId:serverId},function(data){
+    //
+    //            alert("插入成功");
+    //            //  location.reload(true);
+    //        },'json');
+    //    }
     wx.ready(function () {
         // 在这里调用 API
         btn.onclick = function () {
@@ -212,7 +233,8 @@ $signPackage = $jssdk->GetSignPackage();
             wx.chooseImage({
                 success: function (res) {
                     images.localId = res.localIds;  //保存到images
-                    img.src=images.localId;
+                    img.src = images.localId;
+
                     // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
                 }
             });
@@ -223,9 +245,10 @@ $signPackage = $jssdk->GetSignPackage();
                 localId: images.localId[0], // 需要上传的图片的本地ID，由chooseImage接口获得
                 isShowProgressTips: 1, // 默认为1，显示进度提示
                 success: function (res) {
-                    i++;
+//                    i++;
                     //将上传成功后的serverId保存到serverid
                     images.serverId.push(res.serverId);
+                    $_SESSION['serverId'] = res.serverId;
 //                        if (i < len) {
 //                            wxUpload();
 //                        }
@@ -235,5 +258,6 @@ $signPackage = $jssdk->GetSignPackage();
 
 //        }
     });
+
 </script>
 </html>
