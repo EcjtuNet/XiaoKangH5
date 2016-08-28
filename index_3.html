@@ -39,16 +39,21 @@
 
 					<div class="form-group mar-top20 mar-bot20">
 						<label for="message" class="text-center">我的入学宣言</label>
-						<select name="grade" class="form-control" style="background:#444;color:#fff;height:40px;border-bottom:none;border-top-left-radius: 5px;
+						<select name="xuanyan" class="form-control" style="background:#444;color:#fff;height:40px;border-bottom:none;border-top-left-radius: 5px;
   border-top-right-radius: 5px;"id="select2">
-							<option>大学一年级</option>
-							<option>大学二年级</option>
-							<option>大学三年级</option>
-							<option>大学四年级</option>
+							<option>我立志在小康大学开启洪荒之力，走上人生颠覆！</option>
+							<option>生活不只眼前的苟且，还有小康大学和远方！</option>
+							<option>作为小康大学的学生，谦虚的说，天生骄傲！</option>
+							<option>我要在小康大学逆袭成为高富帅和白富美！</option>
 						</select>
 						<textarea class="form-control" name="message" rows="8" data-rule="required" style="background:#444;color:#fff;border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;"></textarea>
+  border-bottom-right-radius: 5px;" id="texttext"></textarea>
 						<div class="validation"></div>
+						<script type="text/javascript">
+						document.getElementById("select2").onchange=function(){
+							document.getElementById("texttext").value=this.options[this.options.selectedIndex].text;
+						}
+						</script>
 					</div>
 
 					<div class="p_line"></div>

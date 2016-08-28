@@ -3,7 +3,7 @@
 error_reporting(E_ALL || ~E_NOTICE);
 header("Content-type:text/html; charset=utf-8");
 require_once "JsSdk.php";
-$jssdk = new JSSDK("AppID", "AppSecret");
+$jssdk = new JSSDK("wx81dffb5d17695838", "651936e8e2d358460475fc322d003965");
 $signPackage = $jssdk->GetSignPackage();
 ?>
 <!DOCTYPE html>
@@ -18,6 +18,7 @@ $signPackage = $jssdk->GetSignPackage();
 <button id="weixin" style="display: block;margin: 2em auto">微信接口测试</button>
 <button id="upload" style="display: block;margin: 2em auto">上传接口测试</button>
 <button id="getServices" style="display: block;margin: 2em auto">获取已上传的图片</button>
+<img src="#" id="img"/>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
     wx.config({
@@ -37,6 +38,7 @@ $signPackage = $jssdk->GetSignPackage();
             "downloadImage"
         ]
     });
+    var img = document.getElementById("img");
     var btn = document.getElementById('weixin');
     //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
     var images = {
@@ -45,17 +47,18 @@ $signPackage = $jssdk->GetSignPackage();
     };
     wx.ready(function () {
         // 在这里调用 API
-        btn.onclick = function(){
-            wx.chooseImage ({
-                success : function(res){
+        btn.onclick = function () {
+            wx.chooseImage({
+                success: function (res) {
                     images.localId = res.localIds;  //保存到images
                     // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
                 }
             });
         }
-        document.getElementById('upload').onclick = function(){
+        document.getElementById('upload').onclick = function () {
             var i = 0, len = images.localId.length;
-            function wxUpload(){
+
+            function wxUpload() {
                 wx.uploadImage({
                     localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
                     isShowProgressTips: 1, // 默认为1，显示进度提示
@@ -63,7 +66,7 @@ $signPackage = $jssdk->GetSignPackage();
                         i++;
                         //将上传成功后的serverId保存到serverid
                         images.serverId.push(res.serverId);
-                        if(i < len){
+                        if (i < len) {
                             wxUpload();
                         }
                     }
@@ -71,9 +74,9 @@ $signPackage = $jssdk->GetSignPackage();
             }
             wxUpload();
         }
-        document.getElementById('getServices').onclick = function(){
+        document.getElementById('getServices').onclick = function () {
             alert(images.serverId);
-        }
+            }
     });
 </script>
 </body>
