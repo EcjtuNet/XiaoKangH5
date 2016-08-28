@@ -1,0 +1,78 @@
+* {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+html{
+	height: 100%;
+	overflow: hidden;
+}
+
+body{
+	height: 100%;
+	overflow: hidden;
+}
+
+.container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.detail{
+	position: absolute;
+	width: auto;
+	bottom: 25%;
+	top: 5%;
+	left: 50%;
+	/*使用动画进行偏移使元素居中显示*/
+	transform: translateX(-50%); 
+}
+
+.detail img {
+	width: auto;
+	height: 100%;
+}
+
+.hand{
+	position: absolute;
+	bottom: -20%;
+	left: 50%;
+	width: 45%;
+	height: auto;
+
+	animation: move 2s 1;
+}
+
+@keyframes move{
+0%{
+	bottom: -10%;
+	left: 30%;
+}
+33%{
+	bottom: -10%;
+	left: 50%;
+}
+66%{
+	bottom: -20%;
+	left: 30%;
+}
+100%{
+	bottom: -20%;
+	left: 50%;
+}
+}
+
+.background {
+	width: 100%;
+	height: 100%;
+}
+
+/*.container{
+	position: relative;
+	background-image: url("../images/background.png");
+	background-size: 100% auto;
+	height: 100%;
+	width: 100%;
+}*/
