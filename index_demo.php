@@ -9,11 +9,6 @@ $signPackage = $jssdk->GetSignPackage();
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body>
-mdzz
-<button onclick="show()" >照片</button>
-<img src="#" id="show"/>
-</body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
     // 注意：所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
@@ -74,4 +69,10 @@ mdzz
         // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
     });
 </script>
+<body>
+mdzz
+<button onclick="show()" >照片</button>
+<img src="#" id="show"/>
+</body>
+
 </html>
