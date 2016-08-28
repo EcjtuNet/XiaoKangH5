@@ -223,7 +223,14 @@ $signPackage = $jssdk->GetSignPackage();
         var oImg = document.getElementsByTagName('img');
 
         for (var i = 0; i < oImg.length; i++) {
-            if (oImg[i].id == sId) {
+            if (oImg[i].id == sId&&oImg[i].name=="lingdai") {
+                oImg[i].previousSibling.previousSibling.checked = true;
+                oImg[i].style.border = '1px solid #FF6600';
+            } else {
+                oImg[i].style.border = '1px solid #008800';
+
+            }
+            if (oImg[i].id == sId&&oImg[i].name=="sex") {
                 oImg[i].previousSibling.previousSibling.checked = true;
                 oImg[i].style.border = '1px solid #FF6600';
             } else {
