@@ -99,12 +99,12 @@ $signPackage = $jssdk->GetSignPackage();
 
     .imgBoy {
         background: url("images/boy.png") no-repeat center;
-        padding-bottom: 6%;
+        padding-bottom: 30px;
     }
 
     .imgGirl {
         background: url("images/girl.png") no-repeat center;
-        padding-bottom: 6%;
+        padding-bottom: 30px;
     }
 </style>
 <body>
@@ -236,7 +236,7 @@ $signPackage = $jssdk->GetSignPackage();
                 oImg[i].previousSibling.previousSibling.checked = true;
                 oImg[i].style.border = '1px solid #FF6600';
             } else {
-                oImg[i].style.border = '1px solid #008800';
+                oImg[i].style.border = '0px';
 
             }
         }
@@ -247,7 +247,7 @@ $signPackage = $jssdk->GetSignPackage();
                 oImg[i].previousSibling.previousSibling.checked = true;
                 oImg[i].style.border = '1px solid #FF6600';
             } else {
-                oImg[i].style.border = '1px solid #008800';
+                oImg[i].style.border = '0px';
 
             }
         }
