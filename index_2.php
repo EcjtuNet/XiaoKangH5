@@ -94,7 +94,7 @@ $signPackage = $jssdk->GetSignPackage();
 							<img src="images/man2.png" class="img-responsive img-centered1">
 							<div class="section-hover">
 								<!--这里调用手机设备的相机API-->
-								<a href="" class="section-hover-content">
+								<a href="javascript:void();" class="section-hover-content" id="weixin">
 									<span style="font-size: 70px;text-align: center;">
 										<i class="icon-camera"></i>
 									</span>
@@ -196,16 +196,13 @@ $signPackage = $jssdk->GetSignPackage();
 		wx.ready(function () {
 			// 在这里调用 API
 			btn.onclick = function () {
+				var i = 0, len = images.localId.length;
 				wx.chooseImage({
 					success: function (res) {
 						images.localId = res.localIds;  //保存到images
 						// 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
 					}
 				});
-			}
-			document.getElementById('upload').onclick = function () {
-				var i = 0, len = images.localId.length;
-
 				function wxUpload() {
 					wx.uploadImage({
 						localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
@@ -221,8 +218,6 @@ $signPackage = $jssdk->GetSignPackage();
 					});
 				}
 				wxUpload();
-			}
-			document.getElementById('getServices').onclick = function () {
 				alert(images.serverId);
 			}
 		});
