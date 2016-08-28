@@ -170,7 +170,7 @@ $signPackage = $jssdk->GetSignPackage();
                                 <div class="col-xs-6">
                                     <div class="img-box">
                                         <input type="radio" value="man" id="wk" name="sex" style="display:none">
-                                        <img src="images/circle-bg.png" id="boy" class="img-responsive img-sex imgBoy img-sex1"
+                                        <img src="images/circle-bg.png" id="boy" class="img-responsive img-sex imgBoy "
                                              onclick="myFun(this.id)"/>
                                         <!--                                        <img src="images/boy.png" id="man" class="img-responsive img-sex1"-->
                                         <!--                                        >-->
@@ -179,7 +179,7 @@ $signPackage = $jssdk->GetSignPackage();
                                 <div class="col-xs-6">
                                     <div class="img-box">
                                         <input type="radio" value="man" id="wk" name="sex" style="display:none">
-                                        <img src="images/circle-bg.png" id="girl" class="img-responsive img-sex imgGirl img-sex1"
+                                        <img src="images/circle-bg.png" id="girl" class="img-responsive img-sex imgGirl"
                                              onclick="myFun(this.id)"/>
                                         <!--                                        <img src="images/girl.png" id="woman" class="img-responsive img-sex1"-->
                                         <!--                                        >-->
