@@ -192,7 +192,7 @@ $signPackage = $jssdk->GetSignPackage();
                     </div>
                     <div class="dash col-xs-12"></div>
                     <div class="col-xs-10 col-xs-offset-1 section-button">
-                        <input type="onsubmit" class="button button-border icon-edit bigger-110" value=" 录入学籍">
+                        <input type="submit" class="button button-border icon-edit bigger-110" value="录入学籍">
                     </div>
                 </section>
             </div>
