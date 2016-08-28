@@ -231,6 +231,15 @@ $signPackage = $jssdk->GetSignPackage();
 
             }
         }
+        for (var i = 4; i <oImg.length; i++) {
+            if (oImg[i].id == sId) {
+                oImg[i].previousSibling.previousSibling.checked = true;
+                oImg[i].style.border = '1px solid #FF6600';
+            } else {
+                oImg[i].style.border = '1px solid #008800';
+
+            }
+        }
     }
     //一开始打算利用ajax选存储img的serverId,后经过思考决定暂时废弃
     //    function setAjaxImage(serverId){
