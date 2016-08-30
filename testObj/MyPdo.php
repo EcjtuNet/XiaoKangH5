@@ -1,19 +1,17 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: lishichun
- * Date: 2016/8/28
- * Time: 21:33
+ * Date: 2016/8/29
+ * Time: 15:45
  */
-define('DB_NAME', 'test');
+define('DB_NAME', 'obj');
 define('DB_USER', 'root');
 define('DB_PASSWD', '');
 define('DB_HOST', 'localhost');
 define('DB_TYPE', 'mysql');
 
-class MyPdo
-{
+class myPdo{
     private $db = null;
 
     public function __construct()
@@ -28,27 +26,13 @@ class MyPdo
             die();
         }
     }
-
-    public function add()
-    {
-
+    public function selectInfo(){
+        $sql = 'select * from info';
+        return $this->db->query($sql);
     }
-
-//    public function show(){
-//        $sql = 'select * from test';
-//        foreach ( $this->db->query($sql) as $value)
-//        {
-//            echo $value[col];
-//        };
-//    }
-//    public function keepImgId($imgId){
-//        $this->db.exec("insert into test VALUES (". .)")
-//    }
-
-//$rs = $db->query("SELECT* FROM test");
-//$result_arr = $rs->fetchAll();
-//print_r($result_arr);
-
-//$count = $db->exec("INSERT INTO fooSET name = 'heiyeluren',gender='男',time=NOW()");
-//echo $count;
+    public function addInfo($Obj){
+        $sql="insert into info values('".$Obj->getUserName()."',".$Obj->getUserAge().",'".$Obj->getUserSex()."')";
+        $count=$this->db->exec($sql);
+        return $count;
+    }
 }

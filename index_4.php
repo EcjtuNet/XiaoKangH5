@@ -23,7 +23,7 @@ $signPackage = $jssdk->GetSignPackage();
 					<section class="row">
 						<h2>小康大学学生证</h2>
 						<div class="section-photo col-xs-8 col-xs-offset-2">
-							<img src="images/man2.png" class="img-responsive img-centered">
+							<img src="<?php echo $_POST['filePath']; ?>" class="img-responsive img-centered">
 						</div>
 						<div class="dash col-xs-12"></div>
 						<div class="section-info col-xs-10 col-xs-offset-1">
