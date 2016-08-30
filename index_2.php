@@ -188,4 +188,96 @@ $signPackage = $jssdk->GetSignPackage();
 			</div>
 		</div>
 	</body>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script>
+		wx.config({
+			debug: true, //调试阶段建议开启
+			appId: '<?php echo $signPackage["appId"];?>',
+			timestamp: <?php echo $signPackage["timestamp"];?>,
+			nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+			signature: '<?php echo $signPackage["signature"];?>',
+			jsApiList: [
+				/*
+				 * 所有要调用的 API 都要加到这个列表中
+				 * 这里以图像接口为例
+				 */
+				"chooseImage",
+				"previewImage",
+				"uploadImage",
+				"downloadImage"
+			]
+		});
+		var img = document.getElementById("img");
+		var btn = document.getElementById('weixin');
+		var oImg = document.getElementsByTagName('img');
+		var imgId=document.getElementById("serverId");
+		var filePath=document.getElementById("filePath");
+		//定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
+		var images = {
+			localId: [],
+			serverId: []
+		};
+		function myLd(sId) {
+			for (var i = 1; i < 4; i++) {
+				if (oImg[i].id == sId) {
+					oImg[i].previousSibling.previousSibling.checked = true;
+					oImg[i].style.border = '1px solid #FF6600';
+				} else {
+					oImg[i].style.border = '0px';
+
+				}
+			}
+		}
+		function mySex(sId) {
+			for (var i = 4; i < oImg.length; i++) {
+				if (oImg[i].id == sId) {
+					oImg[i].previousSibling.previousSibling.checked = true;
+					oImg[i].style.border = '1px solid #FF6600';
+				} else {
+					oImg[i].style.border = '0px';
+
+				}
+			}
+		}
+		//一开始打算利用ajax选存储img的serverId,后经过思考决定暂时废弃
+		//    function setAjaxImage(serverId){
+		//        $.post("./pdo_image.php",{imgId:serverId},function(data){
+		//
+		//            alert("插入成功");
+		//            //  location.reload(true);
+		//        },'json');
+		//    }
+		wx.ready(function () {
+			// 在这里调用 API
+			btn.onclick = function () {
+
+				wx.chooseImage({
+					success: function (res) {
+						images.localId = res.localIds;  //保存到images
+						img.src = images.localId;
+						filePath.value=images.localId;
+						// 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+					}
+				});
+//            var i = 0, len = images.localId.length;
+//
+//            function wxUpload() {
+				wx.uploadImage({
+					localId: images.localId[0], // 需要上传的图片的本地ID，由chooseImage接口获得
+					isShowProgressTips: 1, // 默认为1，显示进度提示
+					success: function (res) {
+//                    i++;
+						//将上传成功后的serverId保存到serverid
+						images.serverId.push(res.serverId);
+						imgId.value= res.serverId;
+//                        if (i < len) {
+//                            wxUpload();
+//                        }
+					}
+				});
+			}
+
+//        }
+		});
+	</script>
 </html>
