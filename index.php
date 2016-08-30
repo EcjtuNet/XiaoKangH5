@@ -17,7 +17,6 @@ header("Content-type:text/html; charset=utf-8");
 
 
 <script type="text/javascript">
-    function show() {
         window.onorientationchange = function () {
             switch (window.orientation) {
                 case -90:
@@ -26,9 +25,7 @@ header("Content-type:text/html; charset=utf-8");
                     break;
             }
         }
-        location.href = 'index_2.php';
-    }
-    setTimeout("show()", 4000);
+    setTimeout("location.href = 'index_2.php'", 4000);
 
 </script>
 </body>

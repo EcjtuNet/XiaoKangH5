@@ -16,9 +16,9 @@
 	width: 100%;
 	height: 100%;
 	margin: 0 auto;
-	padding-top: 60px;
+	/*padding-top: 60px;*/
 	position: absolute;
-	right: -2%;
+	/*right: -2%;*/
 }
 @font-face {
 	font-family:"WawaTC-Regular";
