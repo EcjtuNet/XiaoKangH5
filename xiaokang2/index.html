@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<title>小康大学</title>
+</head>
+<body>
+	<div class="container">
+		<img class="background" src="images/background.jpg">
+		<div class="mainTitle"><img src="images/mainTitle.png"></div>
+		<div class="bus"><img src="images/bus.png"></div>
+		<div class="tint">
+			<img class="tint-image tint-arrow" src="images/tint_arrow.png">
+			<img class="tint-image tint-title" src="images/tint_title.png">
+		</div>
+	</div>
+	<script type="text/javascript">
+
+	function touchStart(event) {
+		var touch = event.touches[0];
+		start_Y = Number(touch.pageX);
+	}
+
+	function touchMove(event) {
+		var touch = event.touches[0];
+		move_Y = Number(touch.pageX);
+		if (start_Y - move_Y > 10) {
+			window.location.href = "index1-4.html";
+		}
+	}
+	document.addEventListener('touchstart',touchStart);
+	document.addEventListener('touchmove',touchMove); 
+	</script>
+</body>
+</html>
