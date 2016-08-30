@@ -2,7 +2,7 @@
 require_once "JsSdk.php";
 error_reporting(E_ALL || ~E_NOTICE);
 header("Content-type:text/html; charset=utf-8");
-$jssdk = new JSSDK("wx81dffb5d17695838", "651936e8e2d358460475fc322d003965");
+$jssdk = new JSSDK("wxefd0b584fdfb2c90", "e9994cc9307a8215b6012f1b1c1dd2a0");
 $signPackage = $jssdk->GetSignPackage();
 ?>
 <!DOCTYPE html>
@@ -101,7 +101,7 @@ $signPackage = $jssdk->GetSignPackage();
 				// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
 				wx.onMenuShareTimeline({
 					title: '小康大学', // 分享标题
-					link: 'http://coderli.top/wxtest/wxShareInterface/show.php', // 分享链接
+					link: 'http://coderli.top/wxtest/wxShareInterface/show.php?b=1', // 分享链接
 					imgUrl: 'http://coderli.top/wxtest/wxShareInterface/cbl.jpg', // 分享图标
 					success: function () {
 						// 用户确认分享后执行的回调函数
