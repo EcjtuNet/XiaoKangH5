@@ -10,17 +10,21 @@ $signPackage = $jssdk->GetSignPackage();
 <html>
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=0.5, minimum-scale=0.5"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=0.5, minimum-scale=0.5"/>
     <title>照片录入</title>
     <link rel="stylesheet" href="css/base.css"/>
     <link rel="stylesheet" href="css/bootstrap.css"/>
-    <link rel="stylesheet" href="css/index_1.css"/>
+    <link rel="stylesheet" href="css/index_1.css"/> 
     <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- 图片裁剪 -->
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <style>
     .img-padding {
-        padding: 10px;
+        padding: 15px;
     }
 
     .section-photo .section-hover {
@@ -60,7 +64,12 @@ $signPackage = $jssdk->GetSignPackage();
     }
 
     .section-info h2 {
-        font-size: 25px;
+        font-size: 40px;
+        display: inline;
+    }
+
+    .section-info h2 {
+        font-size: 35px;
         display: inline;
     }
 
@@ -86,7 +95,7 @@ $signPackage = $jssdk->GetSignPackage();
 
     .img-box .img-sex1 {
         width: 50px;
-        height: 40px;
+        height: 68px;
         position: relative;
         margin-top: 23%;
         left: 30%;
@@ -94,50 +103,70 @@ $signPackage = $jssdk->GetSignPackage();
 
     .imgBoy {
         position: relative;
-        margin-top: 0%;
-		padding-top: 10px;
+        margin-top: 23%;
+
     }
 
     .imgGirl {
         position: relative;
-        margin-top: 0%;
-        padding-top: 10px;
+        margin-top: 23%;
     }
-    .button-border{
-		flex: 1;
-		border: 1px solid #FFF;
-	}
 </style>
 <body>
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12 text-center layout">
-            <section class="row" style="padding-bottom: 0px;padding-top: 70px;">
-                <form method="post" id="form_name" action="index_3.php" role="form" class="contactForm"
-                      style="width:100%;">
+            <section class="row">
+                <form method="post" id="form_name" action="index_3.php" role="form" class="contactForm" style="width:100%;">
                     <input type="text" name="imgId" id="serverId" value="" style="display: none"/>
                     <input type="text" name="filePath" id="filepath" value="" style="display: none"/>
-                    <div class="section-photo col-xs-7 col-xs-offset-2" style="position: relative;left: 30px;">
-                        <img src="images/man1.png" class="img-responsive img-centered1" id="img">
-                        <!--                        <img src="images/face.png" class="img-responsive" width="120" height="65" style="position:absolute;top:28%;left:30%;">-->
-                        <div class="section-hover">
-                            <!--这里调用手机设备的相机API-->
+                    <div class="section-photo col-xs-8 col-xs-offset-2">
+                        
+                        <!-- <img src="images/face.png" class="img-responsive" width="120" height="65" style="position:absolute;top:28%;left:30%;"> -->
+                        <!-- <div class="section-hover">
+                            这里调用手机设备的相机API
                             <a href="javascript:void();" class="section-hover-content" id="weixin">
 									<span style="font-size: 70px;text-align: center;">
 										<i class="icon-camera"></i>
 									</span>
                                 <h4>上传照片</h4>
                             </a>
-                        </div>
+                        </div> -->
+                        <img src="images/man1.png" class="img-responsive img-centered1" id="img">
+
+                        <a href="javascript:void(0);" class="logoBox" id="logoBox">
+                            <!-- <img id="bgl" src="images/userico.jpg" width="100%"> -->
+                            
+                        </a>
+
                     </div>
-                    <div class="dash col-xs-12" style="margin-top: 30px;margin-bottom: 10px;"></div>
-                    <div class="section-info col-xs-8 col-xs-offset-2">
+
+
+                    <!-- 图片裁剪弹出层区域 -->
+                    <div class="htmleaf-container">
+                        <div id="clipArea"></div>
+                        <div id="view"></div>
+                    </div>
+
+                    <!-- 图片选取选项 -->
+                    <div id="dpage">
+                        <a href="javascript:void(0);">
+                            <input type="button" name="file" class="button" value="选取照片">
+                            <input id="file" type="file" onchange="javascript:setImagePreview();" accept="image/*" multiple  />
+                        </a>
+                        <a href="javascript:void(0);" class="qx">
+                            <div id="clipBtn">截取图片</div>
+                        </a>
+                    </div>
+
+                    <div class="dash col-xs-12"></div>
+                    <div class="section-info col-xs-10 col-xs-offset-1">
                         <div class="row padding">
                             <div class="col-xs-12 text-center" style="padding-bottom: 25px;">
                                 <h2>选择学位</h2>
                                 <h3>(学士服的领口颜色)</h3>
                             </div>
-                            <div class="col-xs-12" style="position: relative;top: -25px;">
+                            <div class="col-xs-12">
                                 <div class="col-xs-4">
                                     <input type="radio" value="gk" id="gk" checked="checked" name="lingdai" style="display:none">
                                     <img id="first" src="images/lingkou3.png" onclick="myLd(this.id)"
@@ -153,48 +182,48 @@ $signPackage = $jssdk->GetSignPackage();
                                     <img id="third" src="images/lingkou1.png" onclick="myLd(this.id)"
                                          class="img-responsive img-padding" style="width: 100%"/>
                                 </div>
-                                <div style="width: 100%;display: flex;position: relative;top: -25px;">
+                                <div style="width: 100%;display: flex;">
                                     <div class="section-info-font">
-                                        <h1 style="font-size: 30px;">硕士</h1>
+                                        <h1>硕士</h1>
                                     </div>
                                     <div class="section-info-font">
-                                        <h1 style="font-size: 30px;">博士</h1>
+                                        <h1>博士</h1>
                                     </div>
                                     <div class="section-info-font">
-                                        <h1 style="font-size: 30px;">学士</h1>
+                                        <h1>学士</h1>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="dash col-xs-12" style="margin-top: -40px;"></div>
-                    <div class="section-info col-xs-8 col-xs-offset-2">
+                    <div class="dash col-xs-12" style="margin-top: 0px;"></div>
+                    <div class="section-info col-xs-10 col-xs-offset-1">
                         <div class="row padding">
-                            <div class="col-xs-12 text-center" style="padding-bottom: 0px;position: relative;top: -20px;">
+                            <div class="col-xs-12 text-center" style="padding-bottom: 25px;">
                                 <h2>选择性别</h2>
                             </div>
-                            <div class="col-xs-8 col-xs-offset-2">
+                            <div class="col-xs-10 col-xs-offset-1">
                                 <div class="col-xs-6">
                                     <div class="img-box">
                                         <input type="radio" value="man" checked="checked" id="man" name="sex" style="display:none">
-                                        <img src="images/man.png" id="boy" class="img-responsive " 
+                                        <img src="images/circle-man.png" id="boy" class="img-responsive img-sex imgBoy  "
                                              onclick="mySex(this.id)"/>
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="img-box">
                                         <input type="radio" value="woman"  id="woman" name="sex" style="display:none">
-                                        <img src="images/woman.png" id="girl"
-                                             class="img-responsive "
+                                        <img src="images/circle-woman.png" id="girl"
+                                             class="img-responsive img-sex imgGirl"
                                              onclick="mySex(this.id)"/>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="dash col-xs-12" style="padding-top: 0px;position: relative;top: -60px;"></div>
-                    <div class="col-xs-10 col-xs-offset-1 section-button" style="background:transparent;padding-top: 0px;position: relative;top: -60px;">
-                        <button type="submit" class="button button-border" style="background: transparent;">
+                    <div class="dash col-xs-12"></div>
+                    <div class="col-xs-10 col-xs-offset-1 section-button" style="background:transparent;">
+                        <button type="submit" class="button button-border" style="background: transparent;" >
                             <i class="icon-edit bigger-110"></i>
                             录入学籍
                         </button>
@@ -205,6 +234,14 @@ $signPackage = $jssdk->GetSignPackage();
 </div>
 </body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" type="text/javascript"></script>
+
+<!-- 裁剪照片 -->
+<script src="js/iscroll-zoom.js"></script>
+<script src="js/hammer.js"></script>
+<script src="js/jquery.photoClip.js"></script>
+
 <script>
     wx.config({
         debug: true, //调试阶段建议开启
@@ -332,5 +369,239 @@ $signPackage = $jssdk->GetSignPackage();
         // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
         alert("配置错误");
     });
+</script>
+
+<!-- 裁剪照片 -->
+<script>
+var show1=document.querySelector("#show1");
+var img_tu=document.querySelector("#img_tu");
+var iMGUrl;
+var obUrl = '';
+var baseCode='';
+//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+$("#clipArea").photoClip({
+    width: 420,
+    height: 420,
+    file: "#file",
+    view: "#view",
+    ok: "#clipBtn",
+    loadStart: function() {
+        console.log("照片读取中");
+    },
+    loadComplete: function() {
+        console.log("照片读取完成");
+    },
+    clipFinish: function(dataURL) {
+        console.log(dataURL);
+        iMGUrl=dataURL;
+        // show1.style.display="block";
+        // img_tu.src=dataURL;
+		baseCode=dataURL;
+    }
+});
+function putData(){
+	var str = '{code:baseCode,time:<?php echo time(); ?>}'; 
+	var data=JSON.parse(str); 
+	$.post("imgupload.php",{'data':data},function(data){
+		alert(data);
+	});
+}
+</script>
+<script>
+
+$(document).ready(function(){
+    // 定义头像区域固定大小
+    $(".section-photo").css.height = $(".section-photo").css.width;
+    var w = $('.section-photo').width();
+    $('.section-photo').css('height', w + "px");
+});
+
+    
+
+$(function(){
+    $("#logoBox, #s_dpage, .section-photo").click(function(){
+        $(".htmleaf-container").fadeIn(300);
+        ($("#dpage").hasClass("show")) ? ($("#dpage").removeClass("show")) : ($("#dpage").addClass("show"));
+        // $("#dpage").addClass("show");
+        $('.photo-clip-view').append('<img src="images/man1.png" style=" width:100%; z-index: 100; position: absolute; left: 0;">');
+    });
+    $("#clipBtn").click(function(){
+        $("#logoBox").empty();
+        $('#logoBox').append('<img src="' + imgsource + '" align="absmiddle" style=" width:100%;">');
+        $(".htmleaf-container").hide();
+        $("#dpage").removeClass("show");
+    })
+});
+</script>
+<script type="text/javascript">
+$(function(){
+    
+    jQuery.divselect = function(divselectid,inputselectid) {
+        var inputselect = $(inputselectid);
+        $(divselectid+" small").click(function(){
+            $("#divselect ul").toggle();
+            $(".mask").show();
+        });
+        $(divselectid+" ul li a").click(function(){
+            var txt = $(this).text();
+            $(divselectid+" small").html(txt);
+            var value = $(this).attr("selectid");
+            inputselect.val(value);
+            $(divselectid+" ul").hide();
+            $(".mask").hide();
+            $("#divselect small").css("color","#333");
+        });
+    };
+    $.divselect("#divselect","#inputselect");
+});
+</script>
+<script type="text/javascript">
+$(function(){
+    jQuery.divselectx = function(divselectxid,inputselectxid) {
+        var inputselectx = $(inputselectxid);
+        $(divselectxid+" small").click(function(){
+            $("#divselectx ul").toggle();
+            $(".mask").show();
+        });
+        $(divselectxid+" ul li a").click(function(){
+            var txt = $(this).text();
+            $(divselectxid+" small").html(txt);
+            var value = $(this).attr("selectidx");
+            inputselectx.val(value);
+            $(divselectxid+" ul").hide();
+            $(".mask").hide();
+            $("#divselectx small").css("color","#333")
+        });
+    };
+    $.divselectx("#divselectx","#inputselectx");
+});
+</script>
+<script type="text/javascript">
+$(function(){
+    jQuery.divselecty = function(divselectyid,inputselectyid) {
+        var inputselecty = $(inputselectyid);
+        $(divselectyid+" small").click(function(){
+            $("#divselecty ul").toggle();
+            $(".mask").show();
+        });
+        $(divselectyid+" ul li a").click(function(){
+            var txt = $(this).text();
+            $(divselectyid+" small").html(txt);
+            var value = $(this).attr("selectyid");
+            inputselecty.val(value);
+            $(divselectyid+" ul").hide();
+            $(".mask").hide();
+            $("#divselecty small").css("color","#333")
+        });
+    };
+    $.divselecty("#divselecty","#inputselecty");
+});
+</script>
+<script type="text/javascript">
+$(function(){
+   $(".mask").click(function(){
+       $(".mask").hide();
+       $(".all").hide();
+   })
+    $(".right input").blur(function () {
+        if ($.trim($(this).val()) == '') {
+            $(this).addClass("place").html();
+        }
+        else {
+            $(this).removeClass("place");
+        }
+    })
+});
+</script>
+<script>
+$("#file0").change(function(){
+    var objUrl = getObjectURL(this.files[0]) ;
+     obUrl = objUrl;
+    console.log("objUrl = "+objUrl) ;
+    if (objUrl) {
+        $("#img0").attr("src", objUrl).show();
+    }
+    else{
+        $("#img0").hide();
+    }
+}) ;
+function qd(){
+   var objUrl = getObjectURL(this.files[0]) ;
+   obUrl = objUrl;
+   console.log("objUrl = "+objUrl) ;
+   if (objUrl) {
+       $("#img0").attr("src", objUrl).show();
+   }
+   else{
+       $("#img0").hide();
+   }
+}
+function getObjectURL(file) {
+    var url = null ;
+    if (window.createObjectURL!=undefined) { // basic
+        url = window.createObjectURL(file) ;
+    } else if (window.URL!=undefined) { // mozilla(firefox)
+        url = window.URL.createObjectURL(file) ;
+    } else if (window.webkitURL!=undefined) { // webkit or chrome
+        url = window.webkitURL.createObjectURL(file) ;
+    }
+    return url ;
+}
+</script>
+<script type="text/javascript">
+var subUrl = "";
+$(function (){
+    $(".file-3").bind('change',function(){
+        subUrl = $(this).val()
+        $(".yulan").show();
+        $(".file-3").val("");
+    });
+
+    $(".file-3").each(function(){
+        if($(this).val()==""){
+            $(this).parents(".uploader").find(".filename").val("营业执照");
+        }
+    });
+$(".btn-3").click(function(){
+$("#img-1").attr("src", obUrl);
+$(".yulan").hide();
+$(".file-3").parents(".uploader").find(".filename").val(subUrl);
+})
+    $(".btn-2").click(function(){
+        $(".yulan").hide();
+    })
+
+});
+</script>
+<script type="text/javascript">
+function setImagePreview() {
+    var preview, img_txt, localImag, file_head = document.getElementById("file_head"),
+            picture = file_head.value;
+    if (!picture.match(/.jpg|.gif|.png|.bmp/i)) return alert("您上传的图片格式不正确，请重新选择！"),
+            !1;
+    if (preview = document.getElementById("preview"), file_head.files && file_head.files[0]) preview.style.display = "block",
+            preview.style.width = "100px",
+            preview.style.height = "100px",
+            preview.src = window.navigator.userAgent.indexOf("Chrome") >= 1 || window.navigator.userAgent.indexOf("Safari") >= 1 ? window.webkitURL.createObjectURL(file_head.files[0]) : window.URL.createObjectURL(file_head.files[0]);
+    else {
+        file_head.select(),
+                file_head.blur(),
+                img_txt = document.selection.createRange().text,
+                localImag = document.getElementById("localImag"),
+                localImag.style.width = "100px",
+                localImag.style.height = "100px";
+        try {
+            localImag.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)",
+                    localImag.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = img_txt
+        } catch(f) {
+            return alert("您上传的图片格式不正确，请重新选择！"),
+                    !1
+        }
+        preview.style.display = "none",
+                document.selection.empty()
+    }
+    return document.getElementById("DivUp").style.display = "block",
+            !0
+}
 </script>
 </html>
