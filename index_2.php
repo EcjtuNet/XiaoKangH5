@@ -5,6 +5,7 @@ header("Content-type:text/html; charset=utf-8");
 require_once "JsSdk.php";
 $jssdk = new JSSDK("wxefd0b584fdfb2c90", "e9994cc9307a8215b6012f1b1c1dd2a0");
 $signPackage = $jssdk->GetSignPackage();
+$time=time();
 ?>
 <!DOCTYPE html>
 <html>
@@ -118,8 +119,9 @@ $signPackage = $jssdk->GetSignPackage();
         <div class="col-xs-12 text-center layout">
             <section class="row">
                 <form method="post" id="form_name" action="index_3.php" role="form" class="contactForm" style="width:100%;">
-                    <input type="text" name="imgId" id="serverId" value="" style="display: none"/>
-                    <input type="text" name="filePath" id="filepath" value="" style="display: none"/>
+                    <input type="text" name="imgurl" id="imgurl" value="" style="display: none"/>
+<!--                    <input type="text" name="filePath" id="filepath" value="" style="display: none"/>-->
+                    <input type="text" name="time" id="time" value="<?php echo $time;?>" style="display: none"/>
                     <div class="section-photo col-xs-8 col-xs-offset-2">
                         
                         <!-- <img src="images/face.png" class="img-responsive" width="120" height="65" style="position:absolute;top:28%;left:30%;"> -->
@@ -308,7 +310,7 @@ $signPackage = $jssdk->GetSignPackage();
         // 在这里调用 API
         wx.onMenuShareTimeline({
             title: '这是我得小康大学学生证，你也快来制作自己的学生证吧', // 分享标题
-            link: 'http://isimou.com/wxtest/show.php?serverId=<?php echo $_POST['filePath'];?>', // 分享链接
+            link: 'http://isimou.com/wxtest/', // 分享链接
             imgUrl: 'http://coderli.top/wxtest/wxShareInterface/cbl.jpg', // 分享图标
             success: function () {
                 // 用户确认分享后执行的回调函数
@@ -322,7 +324,7 @@ $signPackage = $jssdk->GetSignPackage();
         wx.onMenuShareAppMessage({
             title: '小康大学', // 分享标题
             desc: '这是我得小康大学学生证，你也快来制作自己的学生证吧', // 分享描述
-            link: 'http://isimou.com/wxtest/show.php?serverId=<?php echo $_POST['filePath'];?>', // 分享链接
+            link: 'http://isimou.com/wxtest/', // 分享链接
             imgUrl: 'http://coderli.top/wxtest/wxShareInterface/cbl.jpg', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
@@ -334,36 +336,36 @@ $signPackage = $jssdk->GetSignPackage();
                 // 用户取消分享后执行的回调函数
             }
         });
-        btn.onclick = function () {
-            wx.chooseImage({
-                success: function (res) {
-                    images.localId = res.localIds;  //保存到images
-                    img.src = images.localId;
-                    Path.value = images.localId;
-                    // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-                    Myupload();
-                }
-
-            });
-            function Myupload() {
-                var i = 0, len = images.localId.length;
-
-                wx.uploadImage({
-                    localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-                    isShowProgressTips: 1, // 默认为1，显示进度提示
-                    success: function (res) {
-                        i++;
-                        //将上传成功后的serverId保存到serverid
-                        imgId.value = res.serverId;
-                        images.serverId.push(res.serverId);
-
-                        if (i < len) {
-                            wxUpload();
-                        }
-                    }
-                });
-            }
-        }
+//        btn.onclick = function () {
+//            wx.chooseImage({
+//                success: function (res) {
+//                    images.localId = res.localIds;  //保存到images
+//                    img.src = images.localId;
+//                    Path.value = images.localId;
+//                    // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+//                    Myupload();
+//                }
+//
+//            });
+//            function Myupload() {
+//                var i = 0, len = images.localId.length;
+//
+//                wx.uploadImage({
+//                    localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+//                    isShowProgressTips: 1, // 默认为1，显示进度提示
+//                    success: function (res) {
+//                        i++;
+//                        //将上传成功后的serverId保存到serverid
+//                        imgId.value = res.serverId;
+//                        images.serverId.push(res.serverId);
+//
+//                        if (i < len) {
+//                            wxUpload();
+//                        }
+//                    }
+//                });
+//            }
+//        }
     });
     wx.error(function (res) {
         // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
@@ -378,6 +380,7 @@ var img_tu=document.querySelector("#img_tu");
 var iMGUrl;
 var obUrl = '';
 var baseCode='';
+var imgurl=document.getElementById("imgurl");
 //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 $("#clipArea").photoClip({
     width: 420,
@@ -400,11 +403,10 @@ $("#clipArea").photoClip({
     }
 });
 function putData(){
-	var str = '{code:baseCode,time:<?php echo time(); ?>}'; 
-	var data=JSON.parse(str); 
-	$.post("imgupload.php",{'data':data},function(data){
-		alert(data);
-	});
+    $.post("./imgupload.php",{code: baseCode,time:<?php echo $time;?>},function(data){
+        imgurl.value=data;
+        console.log("data:"+data+"");
+    },'json');
 }
 </script>
 <script>
@@ -430,6 +432,7 @@ $(function(){
         $('#logoBox').append('<img src="' + imgsource + '" align="absmiddle" style=" width:100%;">');
         $(".htmleaf-container").hide();
         $("#dpage").removeClass("show");
+        putData();
     })
 });
 </script>

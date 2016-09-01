@@ -29,9 +29,9 @@ class MyPdo
         }
     }
 
-    public function add($id,$name,$imgid,$subject,$sex,$grade,$message,$serverid)
+    public function add($id,$name,$subject,$sex,$grade,$message,$imgurl)
     {
-        $sql="INSERT INTO `info`VALUES ($id,'".$imgid."','".$subject."','".$sex."','".$name."','".$grade."','".$message."','".$serverid."')";
+        $sql="INSERT INTO `info`VALUES ($id,'".$subject."','".$sex."','".$name."','".$grade."','".$message."','".$imgurl."')";
         $this->db->exec($sql);
         return $sql;
     }

@@ -6,9 +6,9 @@ require_once "JsSdk.php";
 require_once "pdo.php";
 $jssdk = new JSSDK("wxefd0b584fdfb2c90", "e9994cc9307a8215b6012f1b1c1dd2a0");
 $signPackage = $jssdk->GetSignPackage();
-$imgId = $_GET['serverId'];
+$time = $_GET['time'];
 $mypdo = new myPdo();
-$package = $mypdo->select($imgId);
+$package = $mypdo->select($time);
 $num = 1;
 switch ($package[0]['subject']) {
     case "gk": {
@@ -24,9 +24,8 @@ switch ($package[0]['subject']) {
     }
         break;
 }
-print_r($package[0]);
+//print_r($package[0]);
 ?>
-<?php echo $package[0]['sex'] . $num; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,8 +45,13 @@ print_r($package[0]);
             <section class="row">
                 <h2>小康大学学生证</h2>
                 <div class="section-photo col-xs-8 col-xs-offset-2">
-                    <img id="img" src="images/<?php echo $package[0]['sex'] . $num; ?>.png"
+                    <?php if($package[0]['imgurl']!=""){ ?>
+                    <img id="img" src="images/<?php echo $package[0]['imgurl'] . $num; ?>.png"
                          class="img-responsive img-centered"/>
+                    <?php }else{?>
+                        <img id="img" src="images/<?php echo $package[0]['sex'] . $num; ?>.png"
+                             class="img-responsive img-centered"/>
+                    <?php }?>
                 </div>
                 <div class="dash col-xs-12">
                 </div>

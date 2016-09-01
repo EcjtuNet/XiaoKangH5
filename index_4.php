@@ -6,16 +6,16 @@ header("Content-type:text/html; charset=utf-8");
 $jssdk = new JSSDK("wxefd0b584fdfb2c90", "e9994cc9307a8215b6012f1b1c1dd2a0");
 $signPackage = $jssdk->GetSignPackage();
 
-$imgId = $_POST['imgId'];
+$imgurl = $_POST['imgurl'];
 $lingdai = $_POST['lingdai'];
 $sex = $_POST['sex'];
-$filePath = $_POST['filePath'];
+//$filePath = $_POST['filePath'];
+$time=$_POST['time'];
 $name = $_POST['name'];
 $grade = $_POST['grade'];
 $message = $_POST['message'];
 $pdo = new myPdo();
-$time=time();
-$pdo->add($time,$name, $filePath, $lingdai, $sex, $grade, $message, $imgId);
+$pdo->add($time,$name, $lingdai, $sex, $grade, $message, $imgurl);
 $num=1;
 switch ($lingdai){
     case "gk":{
@@ -49,8 +49,8 @@ switch ($lingdai){
                 <h2>小康大学学生证</h2>
                 <div class="section-photo col-xs-8 col-xs-offset-2">
                     <!--							<img src="images/man2.png" class="img-responsive img-centered">-->
-                    <?php if ($_POST['filePath'] != "") { ?>
-                        <img src="<?php echo $_POST['filePath']; ?>" class="img-responsive img-centered">
+                    <?php if ($_POST['$imgurl'] != "") { ?>
+                        <img src="<?php echo $_POST['$imgurl']; ?>" class="img-responsive img-centered">
                     <?php } else { ?>
                         <img src="images/<?php echo $sex.$num?>.png" class="img-responsive img-centered">
                     <?php } ?>

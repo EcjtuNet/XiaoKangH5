@@ -20,10 +20,11 @@ $signPackage = $jssdk->GetSignPackage();
 <body>
 
 	<form method="post" action="index_4.php" role="form" class="contactForm" style="width:100%;">
-		<input type="text" name="imgId" class="form-control" value="<?php echo $_POST['imgId']; ?>"  style="display: none">
-		<input type="text" name="filePath" class="form-control" value="<?php echo $_POST['filePath']; ?>"  style="display: none">
+		<input type="text" name="imgurl" class="form-control" value="<?php echo $_POST['imgurl']; ?>"  style="display: none">
+<!--		<input type="text" name="filePath" class="form-control" value="--><?php //echo $_POST['filePath']; ?><!--"  style="display: none">-->
 		<input type="text" name="lingdai" class="form-control" value="<?php echo $_POST['lingdai']; ?>"  style="display: none">
 		<input type="text" name="sex" class="form-control" value="<?php echo $_POST['sex']; ?>"  style="display: none">
+		<input type="text" name="time" class="form-control" value="<?php echo $_POST['time']; ?>"  style="display: none">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-10 col-xs-offset-1">
@@ -102,7 +103,7 @@ $signPackage = $jssdk->GetSignPackage();
 			// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
 			wx.onMenuShareTimeline({
 				title: '这是我得小康大学学生证，你也快来制作自己的学生证吧', // 分享标题
-				link: 'http://isimou.com/wxtest/show.php?serverId=<?php echo $_POST['filePath'];?>', // 分享链接
+				link: 'http://isimou.com/wxtest/', // 分享链接
 				imgUrl: 'http://coderli.top/wxtest/wxShareInterface/cbl.jpg', // 分享图标
 				success: function () {
 					// 用户确认分享后执行的回调函数
@@ -116,7 +117,7 @@ $signPackage = $jssdk->GetSignPackage();
 			wx.onMenuShareAppMessage({
 				title: '小康大学', // 分享标题
 				desc: '这是我得小康大学学生证，你也快来制作自己的学生证吧', // 分享描述
-				link: 'http://isimou.com/wxtest/show.php?serverId=<?php echo $_POST['filePath'];?>', // 分享链接
+				link: 'http://isimou.com/wxtest/', // 分享链接
 				imgUrl: 'http://coderli.top/wxtest/wxShareInterface/cbl.jpg', // 分享图标
 				type: 'link', // 分享类型,music、video或link，不填默认为link
 				dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
