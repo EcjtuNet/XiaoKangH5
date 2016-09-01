@@ -6,10 +6,10 @@
  * Date: 2016/8/28
  * Time: 21:33
  */
-define('DB_NAME', 'test');
+define('DB_NAME', 'cbl');
 define('DB_USER', 'root');
-define('DB_PASSWD', '');
-define('DB_HOST', 'localhost');
+define('DB_PASSWD', '123456');
+define('DB_HOST', '127.0.0.1');
 define('DB_TYPE', 'mysql');
 
 class MyPdo
@@ -29,9 +29,17 @@ class MyPdo
         }
     }
 
-    public function add()
+    public function add($id,$name,$imgid,$subject,$sex,$grade,$message,$serverid)
     {
-
+        $sql="INSERT INTO `info`VALUES ($id,'".$imgid."','".$subject."','".$sex."','".$name."','".$grade."','".$message."','".$serverid."')";
+        $this->db->exec($sql);
+        return $sql;
+    }
+    public function select($serverid){
+        $sql = "select * from info where userId='".$serverid."'";
+        $res = $this->db->query($sql);
+        $res_arr =$res->fetchAll();
+         return $res_arr;
     }
 
 //    public function show(){

@@ -25,43 +25,24 @@ body{
 	width: auto;
 	bottom: 25%;
 	top: 5%;
-	left: 50%;
+	left: 47%;
 	/*使用动画进行偏移使元素居中显示*/
 	transform: translateX(-50%); 
 }
 
 .detail img {
 	width: auto;
-	height: 100%;
+	height: 55%;
 }
 
-.hand{
+.indexAnimation{
 	position: absolute;
-	bottom: -20%;
-	left: 50%;
-	width: 45%;
-	height: auto;
+	bottom: -5%;
+	width: 100%;
+	display: block;
+	margin: 0 auto;
+	height: 50%;
 
-	animation: move 2s 1;
-}
-
-@keyframes move{
-0%{
-	bottom: -10%;
-	left: 30%;
-}
-33%{
-	bottom: -10%;
-	left: 50%;
-}
-66%{
-	bottom: -20%;
-	left: 30%;
-}
-100%{
-	bottom: -20%;
-	left: 50%;
-}
 }
 
 .background {
