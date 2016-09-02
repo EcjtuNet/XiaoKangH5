@@ -47,7 +47,7 @@ switch ($lingdai){
         <div class="col-xs-12 text-center layout">
             <section class="row">
                 <h2>小康大学学生证</h2>
-                <div class="section-photo col-xs-8 col-xs-offset-2">
+                <div class="section-photo col-xs-8 col-xs-offset-2" style="position: relative;left: 30px;">
                     <!--							<img src="images/man2.png" class="img-responsive img-centered">-->
                     <?php if ($_POST['$imgurl'] != "") { ?>
                         <img src="<?php echo $_POST['$imgurl']; ?>" class="img-responsive img-centered">

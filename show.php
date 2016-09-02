@@ -44,7 +44,7 @@ switch ($package[0]['subject']) {
         <div class="col-xs-12 text-center layout">
             <section class="row">
                 <h2>小康大学学生证</h2>
-                <div class="section-photo col-xs-8 col-xs-offset-2">
+                <div class="section-photo col-xs-8 col-xs-offset-2" style="position: relative;left: 30px;">
                     <img id="img" src="images/<?php echo $package[0]['sex'] . $num; ?>.png"
                          class="img-responsive img-centered"/>
 <!--                    <img id="img" src="images/man1.png"-->
