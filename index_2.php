@@ -176,17 +176,17 @@ $time=time();
                                 <div class="col-xs-4">
                                     <input type="radio" value="gk" id="gk" checked="checked" name="lingdai" style="display:none">
                                     <img id="first" src="images/lingkou3.png" onclick="myLd(this.id)"
-                                         class="img-responsive img-padding " style="width: 100%"/>
+                                         class="img-responsive img-padding myPic"  style="width: 100%"/>
                                 </div>
                                 <div class="col-xs-4">
                                     <input type="radio" value="lk" id="gk" name="lingdai" style="display:none">
                                     <img id="second" src="images/lingkou2.png" onclick="myLd(this.id)"
-                                         class="img-responsive img-padding" style="width: 100%"/>
+                                         class="img-responsive img-padding myPic" style="width: 100%"/>
                                 </div>
                                 <div class="col-xs-4">
                                     <input type="radio" value="wk" id="gk" name="lingdai" style="display:none">
                                     <img id="third" src="images/lingkou1.png" onclick="myLd(this.id)"
-                                         class="img-responsive img-padding" style="width: 100%"/>
+                                         class="img-responsive img-padding myPic" style="width: 100%"/>
                                 </div>
                                 <div style="width: 100%;display: flex;position: relative;top: -25px;">
                                     <div class="section-info-font">
@@ -212,16 +212,16 @@ $time=time();
                                 <div class="col-xs-6">
                                     <div class="img-box">
                                         <input type="radio" value="man" checked="checked" id="man" name="sex" style="display:none">
-                                        <img src="images/man.png" id="boy" class="img-responsive img-sex imgBoy  "
-                                             onclick="mySex(this.id)"/>
+                                        <img src="images/man.png" id="boy" class="img-responsive img-sex imgBoy  mySex"
+                                             onclick="MSex(this.id)"/>
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="img-box">
                                         <input type="radio" value="woman"  id="woman" name="sex" style="display:none">
                                         <img src="images/woman.png" id="girl"
-                                             class="img-responsive img-sex imgGirl"
-                                             onclick="mySex(this.id)"/>
+                                             class="img-responsive img-sex imgGirl mySex"
+                                             onclick="MSex(this.id)"/>
                                     </div>
                                 </div>
                             </div>
@@ -273,37 +273,39 @@ $time=time();
     var oImg = document.getElementsByTagName('img');
     var imgId = document.getElementById("serverId");
     var Path = document.getElementById("filepath");
+    var myPic=document.getElementsByClassName("myPic");
+    var mySex=document.getElementsByClassName("mySex");
     //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
-    var images = {
-        localId: [],
-        serverId: []
-    };
+//    var images = {
+//        localId: [],
+//        serverId: []
+//    };
     var LDnum=1;
-    var Sex="man";
+    var sex="man";
     function myLd(sId) {
-        for (var i = 1; i <4; i++) {
-            if (oImg[i].id == sId) {
-                oImg[i].previousSibling.previousSibling.checked = true;
+        for (var i = 0; i <myPic.length; i++) {
+            if (myPic[i].id == sId) {
+                myPic[i].previousSibling.previousSibling.checked = true;
                 //  oImg[i].style.border = '1px solid #FF6600';
-                LDnum=i;
-                  img.src="images/"+Sex+LDnum+".png";
+                LDnum=i+1;
+                img.src="images/"+sex+LDnum+".png";
             } else {
                 oImg[i].style.border = '0px';
 
             }
         }
     }
-    function mySex(sId) {
-        for (var i = 4; i < oImg.length; i++) {
-            if (oImg[i].id == sId) {
-                oImg[i].previousSibling.previousSibling.checked = true;
+    function MSex(sId) {
+        for (var i = 0; i < mySex.length; i++) {
+            if (mySex[i].id == sId) {
+                mySex[i].previousSibling.previousSibling.checked = true;
                 //  oImg[i].style.border = '1px solid #FF6600';
-                if(i==5){
-                    Sex="woman";
+                if(i==0){
+                    sex="man";
                 }else{
-                    Sex="man";
+                    sex="woman";
                 }
-                   img.src="images/"+Sex+LDnum+".png";
+                   img.src="images/"+sex+LDnum+".png";
             } else {
                 oImg[i].style.border = '0px';
 
@@ -313,7 +315,7 @@ $time=time();
     wx.ready(function () {
         // 在这里调用 API
         wx.onMenuShareTimeline({
-            title: '这是我得小康大学学生证，你也快来制作自己的学生证吧', // 分享标题
+            title: '我的小康大学学生证', // 分享标题
             link: 'http://isimou.com/wxtest/', // 分享链接
             imgUrl: 'http://coderli.top/wxtest/wxShareInterface/cbl.jpg', // 分享图标
             success: function () {
@@ -327,7 +329,7 @@ $time=time();
         });
         wx.onMenuShareAppMessage({
             title: '小康大学', // 分享标题
-            desc: '这是我得小康大学学生证，你也快来制作自己的学生证吧', // 分享描述
+            desc: '我的小康大学学生证', // 分享描述
             link: 'http://isimou.com/wxtest/', // 分享链接
             imgUrl: 'http://coderli.top/wxtest/wxShareInterface/cbl.jpg', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
@@ -431,7 +433,7 @@ $(document).ready(function(){
     $('.section-photo').css('height', w + "px");
 });
 
-    
+
 
 $(function(){
     $("#logoBox, #s_dpage, .section-photo").click(function(){

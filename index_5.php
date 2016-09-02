@@ -52,7 +52,7 @@
 		wx.ready(function () {
 			// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
 			wx.onMenuShareTimeline({
-				title: '这是我得小康大学学生证，你也快来制作自己的学生证吧', // 分享标题
+				title: '我的小康大学学生证', // 分享标题
 				link: 'http://isimou.com/wxtest/show.php?serverId=<?php echo $_POST['filePath'];?>', // 分享链接
 				imgUrl: 'http://coderli.top/wxtest/wxShareInterface/cbl.jpg', // 分享图标
 				success: function () {
@@ -66,7 +66,7 @@
 			});
 			wx.onMenuShareAppMessage({
 				title: '小康大学', // 分享标题
-				desc: '这是我得小康大学学生证，你也快来制作自己的学生证吧', // 分享描述
+				desc: '我的小康大学学生证', // 分享描述
 				link: 'http://isimou.com/wxtest/show.php?serverId=<?php echo $_POST['serverid'];?>', // 分享链接
 				imgUrl: 'http://coderli.top/wxtest/wxShareInterface/cbl.jpg', // 分享图标
 				type: 'link', // 分享类型,music、video或link，不填默认为link
