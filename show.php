@@ -146,5 +146,8 @@ switch ($package[0]['subject']) {
     //    alert("配置错误");
     });
 </script>
+<script>
+    $('.section-photo').append('<img src="<?php echo $imgurl;?>" style=" width:100%; position: absolute; left: 0;">');
+</script>
 </body>
 </html>

@@ -417,7 +417,7 @@ function putData(){
         url: "./imgupload.php",
         type:"post",
         data: {data:{code: baseCode,time:<?php echo $time;?>}},
-        success: function(data){var path=eval(data);console.log(path.Path);},
+        success: function(data){var path=eval(data);console.log(path.Path); imgurl.value=path.Path;},
         dataType: "json"
     });
 }
