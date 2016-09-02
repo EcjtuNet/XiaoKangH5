@@ -124,15 +124,20 @@ $time=time();
                     <div class="section-photo col-xs-7 col-xs-offset-2" style="position: relative;left: 30px;">
                         
                         <!-- <img src="images/face.png" class="img-responsive" width="120" height="65" style="position:absolute;top:28%;left:30%;"> -->
-<!--                        <div class="section-hover">-->
-<!--                            这里调用手机设备的相机API-->
-<!--                            <a href="javascript:void();" class="section-hover-content" id="weixin">-->
-<!--									<span style="font-size: 70px;text-align: center;">-->
-<!--										<i class="icon-camera"></i>-->
-<!--									</span>-->
-<!--                                <h4>上传照片</h4>-->
-<!--                            </a>-->
-<!--                        </div>-->
+                        <div class="section-hover" style="position: absolute;z-index: 12;width:100%;height: 100%;opacity: 1;" id="section-hover">
+                            <a href="javascript:void();" class="section-hover-content" id="weixin">
+									<span style="font-size: 70px;text-align: center;">
+										<i class="icon-camera"></i>
+									</span>
+                                <h4>上传照片</h4>
+                            </a>
+                        </div>
+                        <script>
+                            var face=document.querySelector("#section-hover");
+                            face.addEventListener("click",function(){
+                               face.classList.add("hide");
+                            });
+                        </script>
                         <img src="images/man1.png" class="img-responsive img-centered1" id="img">
 
                         <a href="javascript:void(0);" class="logoBox" id="logoBox">
@@ -402,11 +407,18 @@ $("#clipArea").photoClip({
     }
 });
 function putData(){
-    $.post("./imgupload.php",{code: baseCode,time:<?php echo $time;?>},function(data,status){
-        imgurl.value=data;
-        console.log("data:"+data+" "+status);
-//        imgurl.value=""
-    },'json');
+//    $.post("./imgupload.php",{code: baseCode,time:<?php //echo $time;?>//},function(data,status){
+////        imgurl.value=data;
+//        console.log("data:"+data+" "+status);
+////        imgurl.value=""
+//    },'json');
+    //$.parseJSON( jsonstr );
+    $.ajax({
+        url: "./imgupload.php",
+        data: $.parseJSON({code: baseCode,time:<?php echo $time;?>}+""),
+        success: function(data){console.log("data:"+data);},
+        dataType: "json"
+    });
 }
 </script>
 <script>

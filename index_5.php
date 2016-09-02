@@ -1,9 +1,5 @@
 <?php
-require_once "JsSdk.php";
-error_reporting(E_ALL || ~E_NOTICE);
-header("Content-type:text/html; charset=utf-8");
-$jssdk = new JSSDK("wxefd0b584fdfb2c90", "e9994cc9307a8215b6012f1b1c1dd2a0");
-$signPackage = $jssdk->GetSignPackage();
+
 ?>
 <!doctype html>
 <html lang="zh-CN">
@@ -19,11 +15,6 @@ $signPackage = $jssdk->GetSignPackage();
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="col-xs-8 col-xs-offset-2">
-				<h1 class="text-center" style="color:#fff;padding-top:75px;font-size:36px;">分享成功！</h1>
-			</div>
-		</div>
 		<div class="row mar-top20">
 			<div class="col-xs-8 col-xs-offset-2">
 				<img src="images/erweima.png" class="img-responsive">

@@ -47,6 +47,8 @@ switch ($package[0]['subject']) {
                 <div class="section-photo col-xs-8 col-xs-offset-2">
                     <img id="img" src="images/<?php echo $package[0]['sex'] . $num; ?>.png"
                          class="img-responsive img-centered"/>
+<!--                    <img id="img" src="images/man1.png"-->
+<!--                         class="img-responsive img-centered"/>-->
                 </div>
                 <div class="dash col-xs-12">
                 </div>
@@ -88,8 +90,8 @@ switch ($package[0]['subject']) {
                                 <input type="text" id="say" placeholder="" class="border-bottom" readonly>
                             </div>
                         </div>
-                        <div class="form-up col-xs-12">
-                            <textarea class="form-control no-border" rows="4" readonly><?php echo $package[0]['message']; ?></textarea>
+                        <div class="form-up col-xs-12" >
+                            <textarea class="form-control no-border" rows="4" disabled style="background:transparent;"><?php echo $package[0]['message']; ?></textarea>
                         </div>
                     </div>
                     <input type="submit" id="input_file" class="hidden">
