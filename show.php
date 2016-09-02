@@ -24,7 +24,7 @@ switch ($package[0]['subject']) {
     }
         break;
 }
-//print_r($package[0]);
+print_r($package);
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,9 +44,9 @@ switch ($package[0]['subject']) {
         <div class="col-xs-12 text-center layout">
             <section class="row">
                 <h2>小康大学学生证</h2>
-                <div class="section-photo col-xs-8 col-xs-offset-2" style="position: relative;left: 30px;">
+                <div class="section-photo col-xs-8 col-xs-offset-2" >
                     <img id="img" src="images/<?php echo $package[0]['sex'] . $num; ?>.png"
-                         class="img-responsive img-centered"/>
+                         class="img-responsive img-centered"  style="z-index: 10;"/>
 <!--                    <img id="img" src="images/man1.png"-->
 <!--                         class="img-responsive img-centered"/>-->
                 </div>
@@ -111,6 +111,18 @@ switch ($package[0]['subject']) {
 </div>
 
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function(){
+        // 定义头像区域固定大小
+        $(".section-photo").css.height = $(".section-photo").css.width;
+        var w = $('.section-photo').width();
+        $('.section-photo').css('height', w + "px");
+    });
+</script>
 <script>
     wx.config({
 //        debug: true, //调试阶段建议开启
@@ -148,7 +160,7 @@ switch ($package[0]['subject']) {
 </script>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" type="text/javascript"></script>
 <script>
-    $('.section-photo').append('<img src="<?php echo $imgurl;?>" style=" width:100%; position: absolute; left: 0;">');
+    $('.section-photo').append('<img src="<?php echo $$package[0]['imgurl'];?>" style=" height:100%; position: absolute; left: 0; top: 0; z-index: 0;     padding-left: 15px;");
 </script>
 </body>
 </html>

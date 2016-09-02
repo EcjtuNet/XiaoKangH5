@@ -14,8 +14,8 @@ $time=$_POST['time'];
 $name = $_POST['name'];
 $grade = $_POST['grade'];
 $message = $_POST['message'];
-//$pdo = new myPdo();
-//$pdo->add($time,$name, $lingdai, $sex, $grade, $message, $imgurl);
+$pdo = new myPdo();
+$pdo->add($time,$name, $lingdai, $sex, $grade, $message, $imgurl);
 $num=1;
 switch ($lingdai){
     case "gk":{
@@ -47,14 +47,13 @@ switch ($lingdai){
         <div class="col-xs-12 text-center layout">
             <section class="row">
                 <h2>小康大学学生证</h2>
-                <div class="section-photo col-xs-8 col-xs-offset-2" style="position: relative;left: 30px;">
+                <div class="section-photo col-xs-8 col-xs-offset-2">
                     <!--							<img src="images/man2.png" class="img-responsive img-centered">-->
-                    <?php if ($_POST['$imgurl'] != "") { ?>
-                        <img src="<?php echo $_POST['$imgurl']; ?>" class="img-responsive img-centered">
-                    <?php } else { ?>
-                        <img src="images/<?php echo $sex.$num?>.png" class="img-responsive img-centered">
-                    <?php } ?>
+
+                        <img src="images/<?php echo $sex.$num?>.png" class="img-responsive img-centered" style="z-index: 10;">
+
                 </div>
+
                 <div class="dash col-xs-12"></div>
                 <div class="section-info col-xs-10 col-xs-offset-1">
                     <form action="">
@@ -119,6 +118,16 @@ switch ($lingdai){
     </div>
 </div>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function(){
+        // 定义头像区域固定大小
+        $(".section-photo").css.height = $(".section-photo").css.width;
+        var w = $('.section-photo').width();
+        $('.section-photo').css('height', w + "px");
+    });
+</script>
 <script>
     // 注意：所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
     // 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
@@ -176,7 +185,7 @@ switch ($lingdai){
 </script>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" type="text/javascript"></script>
 <script>
-    $('.section-photo').append('<img src="<?php echo $imgurl;?>" style=" width:100%; position: absolute; left: 0;">');
+    $('.section-photo').append('<img src="<?php echo $imgurl;?>" style=" height:100%; position: absolute; left: 0; top: 0; z-index: 0;     padding-left: 15px;">');
 </script>
 </body>
 </html>
