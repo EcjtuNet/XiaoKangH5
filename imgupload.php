@@ -23,6 +23,7 @@
 //echo $obj->interest[1]; //prints php
 
 $arr=$_POST;
+$arr=$arr['data'];
 $imgBase=$arr['code'];
 $file_name=$arr['time'];
 $type='';
@@ -30,6 +31,8 @@ if (preg_match('/^(data:\s*image\/(\w+);base64,)/', $imgBase, $result)){
     $type = $result[2];
     $new_file = "./upload/{$file_name}.{$type}";
     if (file_put_contents($new_file, base64_decode(str_replace($result[1], '', $imgBase)))){
-        echo  $new_file;
+//        echo  $new_file;
+        $c = array('Path'=>$new_file);
+        echo json_encode($c);
     }
 }

@@ -125,7 +125,7 @@ $time=time();
                         
                         <!-- <img src="images/face.png" class="img-responsive" width="120" height="65" style="position:absolute;top:28%;left:30%;"> -->
                         <div class="section-hover" style="position: absolute;z-index: 12;width:100%;height: 100%;opacity: 1;" id="section-hover">
-                            <a href="javascript:void();" class="section-hover-content" id="weixin">
+                            <a href="javascript:void(0);" class="section-hover-content" id="weixin">
 									<span style="font-size: 70px;text-align: center;">
 										<i class="icon-camera"></i>
 									</span>
@@ -415,8 +415,9 @@ function putData(){
     //$.parseJSON( jsonstr );
     $.ajax({
         url: "./imgupload.php",
-        data: $.parseJSON({code: baseCode,time:<?php echo $time;?>}+""),
-        success: function(data){console.log("data:"+data);},
+        type:"post",
+        data: {data:{code: baseCode,time:<?php echo $time;?>}},
+        success: function(data){var path=eval(data);console.log(path.Path);},
         dataType: "json"
     });
 }
