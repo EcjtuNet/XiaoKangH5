@@ -24,7 +24,7 @@ switch ($package[0]['subject']) {
     }
         break;
 }
-print_r($package);
+//print_r($package);
 ?>
 <!DOCTYPE html>
 <html>
@@ -160,7 +160,7 @@ print_r($package);
 </script>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" type="text/javascript"></script>
 <script>
-    $('.section-photo').append('<img src="<?php echo $$package[0]['imgurl'];?>" style=" height:100%; position: absolute; left: 0; top: 0; z-index: 0;     padding-left: 15px;");
+    $('.section-photo').append('<img src="<?php echo $package[0]['imgurl'];?>" style=" height:100%; position: absolute; left: 0; top: 0; z-index: 0;padding-left: 15px;">');
 </script>
 </body>
 </html>
