@@ -13,9 +13,9 @@ $signPackage = $jssdk->GetSignPackage();
 </head>
 <body>
 <div class="container">
-    <img class="background" src="images/background.png">
-    <div class="detail"><img src="images/detail.png"></div>
-    <img class="indexAnimation" src="images/indexAnimation.gif">
+    <img class="background" src="images/indexAnimation.jpg">
+    <!-- <div class="detail"><img src="images/detail.png"></div>
+    <img class="indexAnimation" src="images/indexAnimation.gif" style="position: absolute; " width=100% height=100%> -->
 </div>
 
 
