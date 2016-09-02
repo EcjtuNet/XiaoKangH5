@@ -174,6 +174,7 @@ switch ($lingdai){
         alert("配置错误");
     });
 </script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" type="text/javascript"></script>
 <script>
     $('.section-photo').append('<img src="<?php echo $imgurl;?>" style=" width:100%; position: absolute; left: 0;">');
 </script>
