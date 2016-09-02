@@ -45,13 +45,8 @@ switch ($package[0]['subject']) {
             <section class="row">
                 <h2>小康大学学生证</h2>
                 <div class="section-photo col-xs-8 col-xs-offset-2">
-                    <?php if($package[0]['imgurl']!=""){ ?>
-                    <img id="img" src="images/<?php echo $package[0]['imgurl'] . $num; ?>.png"
+                    <img id="img" src="images/<?php echo $package[0]['sex'] . $num; ?>.png"
                          class="img-responsive img-centered"/>
-                    <?php }else{?>
-                        <img id="img" src="images/<?php echo $package[0]['sex'] . $num; ?>.png"
-                             class="img-responsive img-centered"/>
-                    <?php }?>
                 </div>
                 <div class="dash col-xs-12">
                 </div>
@@ -94,8 +89,7 @@ switch ($package[0]['subject']) {
                             </div>
                         </div>
                         <div class="form-up col-xs-12">
-                            <textarea class="form-control no-border"
-                                      rows="4" readonly><?php echo $package[0]['message']; ?></textarea>
+                            <textarea class="form-control no-border" rows="4" readonly><?php echo $package[0]['message']; ?></textarea>
                         </div>
                     </div>
                     <input type="submit" id="input_file" class="hidden">
@@ -117,7 +111,7 @@ switch ($package[0]['subject']) {
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
     wx.config({
-        debug: true, //调试阶段建议开启
+//        debug: true, //调试阶段建议开启
         appId: '<?php echo $signPackage["appId"];?>',
         timestamp: <?php echo $signPackage["timestamp"];?>,
         nonceStr: '<?php echo $signPackage["nonceStr"];?>',
@@ -147,7 +141,7 @@ switch ($package[0]['subject']) {
     });
     wx.error(function (res) {
         // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-        alert("配置错误");
+    //    alert("配置错误");
     });
 </script>
 </body>

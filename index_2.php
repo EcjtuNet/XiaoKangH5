@@ -65,12 +65,7 @@ $time=time();
     }
 
     .section-info h2 {
-        font-size: 40px;
-        display: inline;
-    }
-
-    .section-info h2 {
-        font-size: 35px;
+        font-size: 25px;
         display: inline;
     }
 
@@ -112,28 +107,32 @@ $time=time();
         position: relative;
         margin-top: 23%;
     }
+    .button-border{
+        flex: 1;
+        border: 1px solid #FFF;
+    }
 </style>
 <body>
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12 text-center layout">
-            <section class="row">
+            <section class="row" style="padding-bottom: 0px;padding-top: 70px;">
                 <form method="post" id="form_name" action="index_3.php" role="form" class="contactForm" style="width:100%;">
                     <input type="text" name="imgurl" id="imgurl" value="" style="display: none"/>
 <!--                    <input type="text" name="filePath" id="filepath" value="" style="display: none"/>-->
                     <input type="text" name="time" id="time" value="<?php echo $time;?>" style="display: none"/>
-                    <div class="section-photo col-xs-8 col-xs-offset-2">
+                    <div class="section-photo col-xs-7 col-xs-offset-2" style="position: relative;left: 30px;">
                         
                         <!-- <img src="images/face.png" class="img-responsive" width="120" height="65" style="position:absolute;top:28%;left:30%;"> -->
-                        <!-- <div class="section-hover">
-                            这里调用手机设备的相机API
-                            <a href="javascript:void();" class="section-hover-content" id="weixin">
-									<span style="font-size: 70px;text-align: center;">
-										<i class="icon-camera"></i>
-									</span>
-                                <h4>上传照片</h4>
-                            </a>
-                        </div> -->
+<!--                        <div class="section-hover">-->
+<!--                            这里调用手机设备的相机API-->
+<!--                            <a href="javascript:void();" class="section-hover-content" id="weixin">-->
+<!--									<span style="font-size: 70px;text-align: center;">-->
+<!--										<i class="icon-camera"></i>-->
+<!--									</span>-->
+<!--                                <h4>上传照片</h4>-->
+<!--                            </a>-->
+<!--                        </div>-->
                         <img src="images/man1.png" class="img-responsive img-centered1" id="img">
 
                         <a href="javascript:void(0);" class="logoBox" id="logoBox">
@@ -161,14 +160,14 @@ $time=time();
                         </a>
                     </div>
 
-                    <div class="dash col-xs-12"></div>
+                    <div class="dash col-xs-12" style="margin-top: 30px;margin-bottom: 10px;"></div>
                     <div class="section-info col-xs-10 col-xs-offset-1">
                         <div class="row padding">
                             <div class="col-xs-12 text-center" style="padding-bottom: 25px;">
                                 <h2>选择学位</h2>
                                 <h3>(学士服的领口颜色)</h3>
                             </div>
-                            <div class="col-xs-12">
+                            <div class="col-xs-12" style="position: relative;top: -25px;">
                                 <div class="col-xs-4">
                                     <input type="radio" value="gk" id="gk" checked="checked" name="lingdai" style="display:none">
                                     <img id="first" src="images/lingkou3.png" onclick="myLd(this.id)"
@@ -184,38 +183,38 @@ $time=time();
                                     <img id="third" src="images/lingkou1.png" onclick="myLd(this.id)"
                                          class="img-responsive img-padding" style="width: 100%"/>
                                 </div>
-                                <div style="width: 100%;display: flex;">
+                                <div style="width: 100%;display: flex;position: relative;top: -25px;">
                                     <div class="section-info-font">
-                                        <h1>硕士</h1>
+                                        <h1 style="font-size: 30px;">硕士</h1>
                                     </div>
                                     <div class="section-info-font">
-                                        <h1>博士</h1>
+                                        <h1 style="font-size: 30px;">博士</h1>
                                     </div>
                                     <div class="section-info-font">
-                                        <h1>学士</h1>
+                                        <h1 style="font-size: 30px;">学士</h1>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="dash col-xs-12" style="margin-top: 0px;"></div>
-                    <div class="section-info col-xs-10 col-xs-offset-1">
+                    <div class="dash col-xs-12" style="margin-top: -40px;"></div>
+                    <div class="section-info col-xs-8 col-xs-offset-2">
                         <div class="row padding">
-                            <div class="col-xs-12 text-center" style="padding-bottom: 25px;">
+                            <div class="col-xs-12 text-center" style="padding-bottom: 0px;position: relative;top: -20px;">
                                 <h2>选择性别</h2>
                             </div>
                             <div class="col-xs-10 col-xs-offset-1">
                                 <div class="col-xs-6">
                                     <div class="img-box">
                                         <input type="radio" value="man" checked="checked" id="man" name="sex" style="display:none">
-                                        <img src="images/circle-man.png" id="boy" class="img-responsive img-sex imgBoy  "
+                                        <img src="images/man.png" id="boy" class="img-responsive img-sex imgBoy  "
                                              onclick="mySex(this.id)"/>
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="img-box">
                                         <input type="radio" value="woman"  id="woman" name="sex" style="display:none">
-                                        <img src="images/circle-woman.png" id="girl"
+                                        <img src="images/woman.png" id="girl"
                                              class="img-responsive img-sex imgGirl"
                                              onclick="mySex(this.id)"/>
                                     </div>
@@ -223,8 +222,8 @@ $time=time();
                             </div>
                         </div>
                     </div>
-                    <div class="dash col-xs-12"></div>
-                    <div class="col-xs-10 col-xs-offset-1 section-button" style="background:transparent;">
+                    <div class="dash col-xs-12" style="padding-top: 0px;position: relative;top: -60px;"></div>
+                    <div class="col-xs-10 col-xs-offset-1 section-button" style="background:transparent;padding-top: 0px;position: relative;top: -60px;">
                         <button type="submit" class="button button-border" style="background: transparent;" >
                             <i class="icon-edit bigger-110"></i>
                             录入学籍
@@ -246,7 +245,7 @@ $time=time();
 
 <script>
     wx.config({
-        debug: true, //调试阶段建议开启
+ //       debug: true, //调试阶段建议开启
         appId: '<?php echo $signPackage["appId"];?>',
         timestamp: <?php echo $signPackage["timestamp"];?>,
         nonceStr: '<?php echo $signPackage["nonceStr"];?>',
@@ -369,7 +368,7 @@ $time=time();
     });
     wx.error(function (res) {
         // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-        alert("配置错误");
+  //      alert("配置错误");
     });
 </script>
 
@@ -403,9 +402,10 @@ $("#clipArea").photoClip({
     }
 });
 function putData(){
-    $.post("./imgupload.php",{code: baseCode,time:<?php echo $time;?>},function(data){
+    $.post("./imgupload.php",{code: baseCode,time:<?php echo $time;?>},function(data,status){
         imgurl.value=data;
-        console.log("data:"+data+"");
+        console.log("data:"+data+" "+status);
+//        imgurl.value=""
     },'json');
 }
 </script>
