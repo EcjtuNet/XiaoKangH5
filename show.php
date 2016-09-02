@@ -102,7 +102,7 @@ switch ($package[0]['subject']) {
                         <a href="http://isimou.com/wxtest/" class="button" id="btn_select">领取我的学生证</a>
                     </div>
                     <div class="button-border">
-                        <a href="http://weixin.qq.com/r/f0w0LMXEipj1rYFP9xlt" class="button">康宝莱微服务</a>
+                        <a href="index_5.php" class="button">康宝莱微服务</a>
                     </div>
                 </div>
             </section>

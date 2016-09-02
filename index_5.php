@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row mar-top20">
+		<div class="row mar-top20" style="padding-top:150px;">
 			<div class="col-xs-8 col-xs-offset-2">
 				<img src="images/erweima.png" class="img-responsive">
 			</div>

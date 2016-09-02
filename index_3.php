@@ -56,7 +56,7 @@ $signPackage = $jssdk->GetSignPackage();
 						<label for="message" class="text-center">我的入学宣言</label>
 						<select  class="form-control" style="background:#444;color:#fff;height:40px;border-bottom:none;border-top-left-radius: 5px;
   border-top-right-radius: 5px;"id="select2">
-							<option>我立志在小康大学开启洪荒之力，走上人生颠覆！</option>
+							<option>我立志在小康大学开启洪荒之力，走上人生巅峰！</option>
 							<option>生活不只眼前的苟且，还有小康大学和远方！</option>
 							<option>作为小康大学的学生，谦虚的说，天生骄傲！</option>
 							<option>我要在小康大学逆袭成为高富帅和白富美！</option>
@@ -65,7 +65,11 @@ $signPackage = $jssdk->GetSignPackage();
   border-bottom-right-radius: 5px;" id="texttext"></textarea>
 						<div class="validation"></div>
 						<script type="text/javascript">
-						document.getElementById("select2").onchange=function(){
+						$(document).ready(function(){
+						    document.getElementById("texttext").innerHTML = $("#select2").val();
+						});
+						
+						document.getElementById("select2").onchange = function(){
 							document.getElementById("texttext").value=this.options[this.options.selectedIndex].text;
 						}
 						</script>
